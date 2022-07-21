@@ -5,6 +5,7 @@ import ProductsPage from "./pages/ProductsPage";
 import FavoritePage from "./pages/FavoritePage";
 import Navigation from "./UI/Navigation";
 import MainPage from "./pages/MainPage";
+import Cart from "./Cart/Cart";
 
 const data = [
   { id: "m1", name: "Book", description: "A very good book" },
@@ -13,7 +14,16 @@ const data = [
 ];
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
   const [favorites, setFavorites] = useState([]);
+
+  const showModalHandler = () => {
+    setShowModal(true);
+  };
+
+  const hideModalHandler = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     setFavorites(data);
@@ -33,9 +43,9 @@ function App() {
   return (
     <section>
       <nav>
-        <Navigation />
+        <Navigation showModalHandler={showModalHandler} />
       </nav>
-
+      {showModal && <Cart onClose={hideModalHandler} />}
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route
