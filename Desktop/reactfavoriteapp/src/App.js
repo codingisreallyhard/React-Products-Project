@@ -11,6 +11,36 @@ const data = [
   { id: "m1", name: "Book", description: "A very good book", price: 22.99 },
   { id: "m2", name: "Car", description: "A very good car", price: 22.39 },
   { id: "m3", name: "Plane", description: "A very good plane", price: 19.99 },
+  {
+    id: "m4",
+    name: "Laptop",
+    description: "A very powerful laptop",
+    price: 19.99,
+  },
+  {
+    id: "m5",
+    name: "TV",
+    description: "A very expensive TV",
+    price: 19.99,
+  },
+  {
+    id: "m6",
+    name: "Watch",
+    description: "A very stylish watch",
+    price: 19.99,
+  },
+  {
+    id: "m7",
+    name: "SSD",
+    description: "A very big SSD",
+    price: 19.99,
+  },
+  {
+    id: "m8",
+    name: "Monitor",
+    description: "A very big monitor for gaming",
+    price: 19.99,
+  },
 ];
 
 function App() {
