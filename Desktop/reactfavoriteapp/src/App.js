@@ -6,6 +6,7 @@ import FavoritePage from "./pages/FavoritePage";
 import Navigation from "./UI/Navigation";
 import MainPage from "./pages/MainPage";
 import Cart from "./Cart/Cart";
+import Filter from "./Products/Filter";
 
 const data = [
   { id: "m1", name: "Book", description: "A very good book", price: 22.99 },
@@ -47,6 +48,25 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [popular, setPopular] = useState([]);
+  useEffect(() => {
+    dataFetch();
+  }, []);
+
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "SIGN-UP-FOR-KEY",
+      "X-RapidAPI-Host": "datagram-products-v1.p.rapidapi.com",
+    },
+  };
+
+  const dataFetch = () => {
+    fetch("https://datagram-products-v1.p.rapidapi.com/test", options)
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err));
+  };
   const showModalHandler = () => {
     setShowModal(true);
   };
@@ -113,6 +133,7 @@ function App() {
           onRemove={onRemove}
         />
       )}
+      <Filter cartItems={cartItems} />
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route

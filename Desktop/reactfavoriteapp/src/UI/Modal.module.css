@@ -16,10 +16,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center; */
-  width: 90%;
+  /* width: 90%; */
   height: 50%;
   margin: auto;
-  right: 5%;
+  right: 25%;
 
   background-color: white;
   padding: 1rem;

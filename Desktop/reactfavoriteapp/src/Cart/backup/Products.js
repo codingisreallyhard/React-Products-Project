@@ -1,16 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "../UI/Card";
 import classes from "./Products.module.css";
 import styles from "../Cart/backup/Global.module.css";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { GrFavorite } from "react-icons/gr";
-import { MdFavorite } from "react-icons/md";
-import { BsFillCartCheckFill } from "react-icons/bs";
 
 const Products = (props) => {
-  const [allProducts, setAllProducts] = useState([]);
   const { favorites, handleFavorite, onAdd } = props;
-
   return (
     <div className={classes.gridcontainer}>
       {favorites.map((item, i) => (
@@ -29,17 +23,17 @@ const Products = (props) => {
               <h2 class="price">{item.price}$</h2>
             </div>
           </div>
-          <div className={classes.flexbuttons}>
-            <button
-              className={styles["my-button"]}
-              onClick={() => handleFavorite(item.id)}
-            >
-              {item.favorite === true ? <MdFavorite /> : <GrFavorite />}
-            </button>
-            <button className={styles["my-button"]} onClick={() => onAdd(item)}>
-              <BsFillCartCheckFill />
-            </button>
-          </div>
+          <button
+            className={styles["my-button"]}
+            onClick={() => handleFavorite(item.id)}
+          >
+            {item.favorite === true
+              ? "Remove from Favorites"
+              : "Add to Favorites"}
+          </button>
+          <button className={styles["my-button"]} onClick={() => onAdd(item)}>
+            Add to cart
+          </button>
         </Card>
       ))}
     </div>
