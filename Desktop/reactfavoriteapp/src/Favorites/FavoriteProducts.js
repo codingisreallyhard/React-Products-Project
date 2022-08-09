@@ -8,7 +8,7 @@ const FavoriteProducts = (props) => {
       <h1>Favorite list</h1>
       <ul>
         {favorites.map((item) =>
-          item.favorite === true ? <li key={item.id}>{item.name}</li> : null
+          item.favorite === true ? <div>{item.category}</div> : null
         )}
       </ul>
     </div>

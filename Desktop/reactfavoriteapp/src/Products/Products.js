@@ -6,14 +6,30 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GrFavorite } from "react-icons/gr";
 import { MdFavorite } from "react-icons/md";
 import { BsFillCartCheckFill } from "react-icons/bs";
+import Buttons from "./Buttons";
 
 const Products = (props) => {
-  const [allProducts, setAllProducts] = useState([]);
-  const { favorites, handleFavorite, onAdd } = props;
+  const {
+    favorites,
+    handleFavorite,
+    onAdd,
+    setFilteredItems,
+    filteredItems,
+    data,
+    filterItem,
+    menuItems,
+  } = props;
 
   return (
     <div className={classes.gridcontainer}>
-      {favorites.map((item, i) => (
+      <Buttons
+        menuItems={menuItems}
+        setFilteredItems={setFilteredItems}
+        data={data}
+        filterItem={filterItem}
+      />
+
+      {filteredItems.map((item, i) => (
         <Card key={i} className={styles["pricing-plan--complete"]}>
           <div>
             <div className={classes.imgBox}>

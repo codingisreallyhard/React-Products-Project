@@ -6,38 +6,60 @@ import FavoritePage from "./pages/FavoritePage";
 import Navigation from "./UI/Navigation";
 import MainPage from "./pages/MainPage";
 import Cart from "./Cart/Cart";
-import Filter from "./Products/Filter";
 
 const data = [
-  { id: "m1", name: "Book", description: "A very good book", price: 22.99 },
-  { id: "m2", name: "Car", description: "A very good car", price: 22.39 },
-  { id: "m3", name: "Plane", description: "A very good plane", price: 19.99 },
+  {
+    id: "m1",
+    category: "Reading",
+    name: "Book",
+    description: "A very good book",
+    price: 22.99,
+  },
+  {
+    id: "m2",
+    name: "Car",
+    category: "Futuristic",
+    description: "A very good car",
+    price: 22.39,
+  },
+  {
+    id: "m3",
+    name: "Plane",
+    category: "Mobile",
+    description: "A very good plane",
+    price: 19.99,
+  },
   {
     id: "m4",
+    category: "Mobile",
     name: "Laptop",
     description: "A very powerful laptop",
     price: 19.99,
   },
   {
     id: "m5",
+    category: "Mobile",
     name: "TV",
     description: "A very expensive TV",
     price: 19.99,
   },
   {
     id: "m6",
+    category: "Comfort",
     name: "Watch",
     description: "A very stylish watch",
     price: 19.99,
   },
   {
     id: "m7",
+    category: "Home",
     name: "SSD",
     description: "A very big SSD",
     price: 19.99,
   },
   {
     id: "m8",
+    category: "Gaming",
     name: "Monitor",
     description: "A very big monitor for gaming",
     price: 19.99,
@@ -48,25 +70,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [popular, setPopular] = useState([]);
-  useEffect(() => {
-    dataFetch();
-  }, []);
-
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "SIGN-UP-FOR-KEY",
-      "X-RapidAPI-Host": "datagram-products-v1.p.rapidapi.com",
-    },
-  };
-
-  const dataFetch = () => {
-    fetch("https://datagram-products-v1.p.rapidapi.com/test", options)
-      .then((response) => response.json())
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err));
-  };
+  const [filteredItems, setFilteredItems] = useState(data);
   const showModalHandler = () => {
     setShowModal(true);
   };
@@ -77,15 +81,18 @@ function App() {
 
   useEffect(() => {
     setFavorites(data);
-  }, []);
-
-  useEffect(() => {
     console.log(favorites);
   }, [favorites]);
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+  const menuItems = [...new Set(filteredItems.map((Val) => Val.category))];
+
+  const filterItem = (Gaming) => {
+    const newItem = data.filter((newVal) => {
+      return newVal.category === Gaming;
+      // comparing category for displaying data
+    });
+    setFilteredItems(newItem);
+  };
 
   function handleFavorite(id) {
     const newFavorites = favorites.map((item) => {
@@ -133,7 +140,7 @@ function App() {
           onRemove={onRemove}
         />
       )}
-      <Filter cartItems={cartItems} />
+
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route
@@ -143,6 +150,11 @@ function App() {
               handleFavorite={handleFavorite}
               favorites={favorites}
               onAdd={onAdd}
+              filteredItems={filteredItems}
+              setFilteredItems={setFilteredItems}
+              data={data}
+              filterItem={filterItem}
+              menuItems={menuItems}
             />
           }
         ></Route>
