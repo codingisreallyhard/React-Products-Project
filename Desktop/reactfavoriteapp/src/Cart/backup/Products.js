@@ -76,3 +76,15 @@ onClick={() =>
   handleFavorite({ ...item, favorite: item.favorite })
 }
 >
+
+
+
+
+function handleFavorite(id) {
+    const newFavorites = favorites.map((item) => {
+      return item.id === id ? { ...item, favorite: !item.favorite } : item;
+    });
+
+    setFavorites(newFavorites);
+    console.log(favorites);
+  }

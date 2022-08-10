@@ -116,7 +116,7 @@ function App() {
   };
 
   useEffect(() => {
-    setFavorites(filteredItems);
+    setFavorites(favorites);
     console.log(favorites);
   }, [favorites]);
 
@@ -134,8 +134,11 @@ function App() {
     const newFavorites = favorites.map((item) => {
       return item.id === id ? { ...item, favorite: !item.favorite } : item;
     });
+
     setFavorites(newFavorites);
+
     console.log(favorites);
+    console.log(filteredItems);
   }
 
   const onAdd = (product) => {
