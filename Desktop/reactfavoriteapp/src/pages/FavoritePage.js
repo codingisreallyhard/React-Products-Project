@@ -3,10 +3,14 @@ import FavoriteProducts from "../Favorites/FavoriteProducts";
 import data from "../Products/data";
 
 const FavoritePage = (props) => {
-  const { favorites } = props;
+  const { filteredItems, favorites } = props;
   return (
     <div>
-      <FavoriteProducts data={data} favorites={favorites} />
+      <FavoriteProducts
+        data={data}
+        filteredItems={filteredItems}
+        favorites={favorites}
+      />
     </div>
   );
 };

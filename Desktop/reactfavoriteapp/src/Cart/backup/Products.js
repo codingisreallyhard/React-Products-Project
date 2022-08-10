@@ -41,3 +41,38 @@ const Products = (props) => {
 };
 
 export default Products;
+
+function handleFavorite(id) {
+  const newFavorites = favorites.map((item) => {
+    return item.id === id ? { ...item, favorite: true } : item;
+  });
+  setFavorites(newFavorites);
+}
+
+function handleFavorite(id) {
+  const newFavorites = filteredItems.map((item) => {
+    return item.id === id ? { ...item, favorite: !item.favorite } : item;
+  });
+  setFilteredItems(newFavorites);
+  console.log(filteredItems);
+}
+
+const handleFavorite = ({ id }) => {
+  setFavorites((prevChecked) => {
+    return prevChecked.map((item) => {
+      if (item.id === id) {
+        item.favorite = true;
+      }
+      return item;
+    });
+  });
+};
+
+
+
+<button
+className={styles["my-button"]}
+onClick={() =>
+  handleFavorite({ ...item, favorite: item.favorite })
+}
+>

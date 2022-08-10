@@ -15,7 +15,7 @@ const Products = (props) => {
     onAdd,
     setFilteredItems,
     filteredItems,
-    data,
+    handleRemoveFavorite,
     filterItem,
     menuItems,
   } = props;
@@ -25,8 +25,9 @@ const Products = (props) => {
       <Buttons
         menuItems={menuItems}
         setFilteredItems={setFilteredItems}
-        data={data}
+        filteredItems={filteredItems}
         filterItem={filterItem}
+        favorites={favorites}
       />
 
       {filteredItems.map((item, i) => (
@@ -34,7 +35,7 @@ const Products = (props) => {
           <div>
             <div className={classes.imgBox}>
               <img
-                src="https://www.corsair.com/corsairmedia/sys_master/productcontent/CH-9300011-NA-M65_PRO_RGB_BLK_04.png"
+                src={item.image}
                 alt="mouse corsair"
                 className={classes.mouse}
               />
@@ -52,6 +53,7 @@ const Products = (props) => {
             >
               {item.favorite === true ? <MdFavorite /> : <GrFavorite />}
             </button>
+
             <button className={styles["my-button"]} onClick={() => onAdd(item)}>
               <BsFillCartCheckFill />
             </button>

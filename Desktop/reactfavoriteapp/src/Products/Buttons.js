@@ -1,6 +1,6 @@
 import React from "react";
 
-const Buttons = ({ setFilteredItems, menuItems, data, filterItem }) => {
+const Buttons = ({ setFilteredItems, menuItems, favorites, filterItem }) => {
   return (
     <>
       <>
@@ -18,13 +18,12 @@ const Buttons = ({ setFilteredItems, menuItems, data, filterItem }) => {
           })}
           <button
             className="btn-dark text-white p-1 px-3 mx-5 fw-bold btn"
-            onClick={() => setFilteredItems(data)}
+            onClick={() => setFilteredItems(favorites)}
           >
             All
           </button>
           <div></div>
         </div>
-        {<div></div>}
       </>
     </>
   );

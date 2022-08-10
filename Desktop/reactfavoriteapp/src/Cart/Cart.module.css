@@ -14,6 +14,7 @@ tbody {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   /* flex: 1 0 50%; */
   border-top: 1px solid #dee2e6;
+  align-items: center;
 }
 
 .divtd {

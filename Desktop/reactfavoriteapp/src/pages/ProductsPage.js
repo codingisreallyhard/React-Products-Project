@@ -14,6 +14,7 @@ const ProductsPage = (props) => {
     data,
     filterItem,
     menuItems,
+    
   } = props;
   return (
     <div className={classes.containergridrows}>
@@ -27,6 +28,7 @@ const ProductsPage = (props) => {
         data={data}
         filterItem={filterItem}
         menuItems={menuItems}
+      
       />
     </div>
   );

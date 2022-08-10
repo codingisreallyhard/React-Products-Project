@@ -6,10 +6,11 @@
   margin: auto;
   margin-bottom: 4rem;
   overflow: hidden;
+  width: 80%;
 }
 
 .card:hover {
   transform: scale(1.1);
 
-  transition: all 0.4s;
+  transition: all 1s;
 }
