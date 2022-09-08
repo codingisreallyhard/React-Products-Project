@@ -1,0 +1,23 @@
+.containeraddproduct {
+  width: 1200px;
+}
+
+.formcontainer {
+  display: flex;
+  background-color: red;
+  flex-direction: row;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.switchercontainer {
+  padding: 24px;
+}
+
+#product_form th {
+  padding: 24px;
+}
+
+#product_form tr {
+  padding: 24px;
+}/*# sourceMappingURL=NewProduct.css.map */
