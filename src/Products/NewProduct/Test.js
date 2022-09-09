@@ -1,4 +1,4 @@
-<label>SKU </label>
+{/* <label>SKU </label>
 <input type="text" name="SKU" onChange={handleChange} />
  <label>Price($) </label>
  <input type="text" name="name" onChange={handleChange} />
@@ -26,4 +26,4 @@
 
 {book && <Book />}
 {furniture && <Furniture />}
-{dvd && <DVD />}
+{dvd && <DVD />} */}

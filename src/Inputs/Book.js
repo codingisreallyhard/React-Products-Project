@@ -1,6 +1,7 @@
 import React from "react";
 
 function Book() {
+  
   return (
     <>
       <div className="divcontainer">
@@ -10,6 +11,7 @@ function Book() {
           placeholder="Weight in KG"
           id="weight"
           required
+          
         ></input>
       </div>
       <p className="typeclass">Please, provide weight</p>

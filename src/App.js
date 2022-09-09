@@ -7,7 +7,6 @@ import Navigation from "./UI/Navigation";
 function App() {
   return (
     <>
-      <Navigation />
       <Routes>
         <Route path="/" element={<ProductListPage />} />
         <Route path="/add-product" element={<AddProductPage />} />

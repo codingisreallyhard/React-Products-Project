@@ -9,9 +9,6 @@
 }
 
 #product_form {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-
   #product_form th {
     padding: $primarySize;
   }
@@ -31,6 +28,9 @@
 
 .formcontainer {
   border-top: 1px solid $blackColor;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 380px;
 }
 
 .headercontainer {
@@ -47,11 +47,46 @@
   }
 }
 
+.footercontainer {
+  margin-top: $thirdSize;
+  @include Flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $blackColor;
+  margin-left: 120px;
+  margin-right: 120px;
+
+  .addproductfooter {
+    margin-top: $secondSize;
+  }
+}
+
+.myButton {
+  background-color: #fff;
+  border-radius: 30px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+}
+.myButton:hover {
+  background-color: #dfdfdf;
+}
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+
 /* Switch Types CSS classes(weight,size,dimensions)*/
 
 .typeclass {
   margin-left: 108px;
-  margin-top: $thirdSize;
+  margin-top: $primarySize;
 }
 
 .typeswitchcontainer {

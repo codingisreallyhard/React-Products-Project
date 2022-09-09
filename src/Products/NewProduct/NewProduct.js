@@ -13,6 +13,7 @@ function NewProduct() {
   const [book, setBook] = useState(false);
   const [furniture, setFurniture] = useState(false);
   const [dvd, setDvd] = useState(false);
+  const [required, isRequired] = useState();
 
   useEffect(() => {
     type === "dvd" ? setDvd(true) : setDvd(false);
@@ -37,60 +38,89 @@ function NewProduct() {
   };
 
   return (
-    <div className="container containeraddproduct mt-4">
-      <div className='headercontainer'>
-      <div className="hcontainer">
-        <h1>Product Add</h1>
-      </div>
-      <div class="buttonscontainer">
-        <SaveButton />
-        <CancelButton />
-      </div>
-      </div>
-      <div className="formcontainer">
-        <form onSubmit={submitHandler} id="product_form">
-          <div>
-            <div className="divcontainer">
-              <label>SKU </label>
-              <input type="text" name="SKU" onChange={handleChange} required />
+    <>
+      <form onSubmit={submitHandler} id="product_form">
+        <div>
+          <div className="container containeraddproduct mt-4">
+            <div className="headercontainer">
+              <div className="hcontainer">
+                <h1>Product Add</h1>
+              </div>
+              <div className="buttonscontainer">
+                <button className="myButton" onSubmit={submitHandler}>
+                  Save{" "}
+                </button>
+                <CancelButton />
+              </div>
             </div>
-            <div className="divcontainer">
-              <label>Name </label>
-              <input type="text" name="SKU" onChange={handleChange} required />
-            </div>
-            <div className="divcontainer">
-              <label>Price($) </label>
-              <input type="text" name="SKU" onChange={handleChange} required />
-            </div>
+            <div className="formcontainer">
+              <div>
+                <div className="divcontainer">
+                  <label>SKU </label>
+                  <input
+                    type="text"
+                    name="SKU"
+                    onChange={handleChange}
+                    required
+                    placeholder="#sku"
+                  />
+                </div>
+                <div className="divcontainer">
+                  <label>Name </label>
+                  <input
+                    type="text"
+                    name="name"
+                    onChange={handleChange}
+                    required
+                    placeholder="#name"
+                  />
+                </div>
+                <div className="divcontainer">
+                  <label>Price($) </label>
+                  <input
+                    type="text"
+                    name="price"
+                    onChange={handleChange}
+                    required
+                    placeholder="#price"
+                  />
+                </div>
 
-            <div className="divcontainer typeswitchcontainer ">
-              <h6 className="smallswitchtype">Type Switcher</h6>
-              <select
-                id="productType"
-                value={type}
-                onChange={handleTypeOnChange}
-              >
-                <option value="typeswitcher">Type Switcher</option>
-                <option id="DVD" value="dvd">
-                  DVD
-                </option>
-                <option id="Furniture" value="book">
-                  Book
-                </option>
-                <option id="Book" value="furniture">
-                  Furniture
-                </option>
-              </select>
-            </div>
-            <div>
-              {book && <Book />}
-              {furniture && <Furniture />}
-              {dvd && <DVD />}
+                <div className="divcontainer typeswitchcontainer ">
+                  <h6 className="smallswitchtype">Type Switcher</h6>
+                  <select
+                    id="productType"
+                    value={type}
+                    onChange={handleTypeOnChange}
+                  >
+                    <option value="typeswitcher">Type Switcher</option>
+                    <option id="DVD" value="dvd">
+                      DVD
+                    </option>
+                    <option id="Furniture" value="book">
+                      Book
+                    </option>
+                    <option id="Book" value="furniture">
+                      Furniture
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  {book && <Book />}
+                  {furniture && <Furniture />}
+                  {dvd && <DVD />}
+                </div>
+              </div>
             </div>
           </div>
-        </form>
-      </div>
-    </div>
+        </div>
+        <div className="footercontainer">
+          <footer className="addproductfooter">
+            ScandiWeb Test assignment
+          </footer>
+        </div>
+      </form>
+    </>
   );
 }
 
