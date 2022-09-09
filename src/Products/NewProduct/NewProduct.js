@@ -4,6 +4,8 @@ import Book from "../../Inputs/Book";
 import Furniture from "../../Inputs/Furniture";
 import DVD from "../../Inputs/DVD";
 import "../../Styles/NewProduct.css";
+import SaveButton from "../../UI/SaveButton";
+import CancelButton from "../../UI/CancelButton";
 
 function NewProduct() {
   const [inputs, setInputs] = useState({});
@@ -36,8 +38,14 @@ function NewProduct() {
 
   return (
     <div className="container containeraddproduct mt-4">
-      <div>
+      <div className='headercontainer'>
+      <div className="hcontainer">
         <h1>Product Add</h1>
+      </div>
+      <div class="buttonscontainer">
+        <SaveButton />
+        <CancelButton />
+      </div>
       </div>
       <div className="formcontainer">
         <form onSubmit={submitHandler} id="product_form">

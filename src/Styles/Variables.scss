@@ -3,3 +3,17 @@
 $blackColor: black;
 $mainColor: #2b8a3e;
 $secondaryColor: #37b24d;
+$primarySize: 24px;
+$secondarySize: 48px;
+$thirdSize: 64px;
+@mixin FlexRowSpace {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: $primarySize;
+}
+
+@mixin Flex {
+  display: flex;
+  flex-direction: row;
+}

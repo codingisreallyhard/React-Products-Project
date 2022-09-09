@@ -7,7 +7,7 @@ function Furniture() {
         <label>Height</label>
 
         <input
-          type="text"
+          type="number"
           placeholder="Height in CM"
           id="height"
           required
@@ -16,7 +16,7 @@ function Furniture() {
       <div className="divcontainer">
         <label>Width</label>
         <input
-          type="text"
+          type="number"
           placeholder=" Width in CM"
           id="width"
           required
@@ -25,13 +25,13 @@ function Furniture() {
       <div className="divcontainer">
         <label>Length</label>
         <input
-          type="text"
+          type="number"
           placeholder="Length in CM"
           id="length"
           required
         ></input>
       </div>
-      <p className='typeclass'>Please, provide dimensions</p>
+      <p className="typeclass">Please, provide dimensions</p>
     </>
   );
 }
