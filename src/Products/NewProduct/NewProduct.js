@@ -41,69 +41,45 @@ function NewProduct() {
       </div>
       <div className="formcontainer">
         <form onSubmit={submitHandler} id="product_form">
-          <table cellSpacing="10">
-            <tbody>
-              <tr>
-                <th>
-                  <label>SKU </label>
-                </th>
-                <td>
-                  <input type="text" name="SKU" onChange={handleChange} />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label>Name </label>
-                </th>
-                <td>
-                  <input type="text" name="name" onChange={handleChange} />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label>Price($) </label>
-                </th>
-                <td>
-                  <input type="text" name="price" onChange={handleChange} />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label>Type Switcher </label>
-                </th>
-                <td>
-                  <select
-                    id="productType"
-                    value={type}
-                    onChange={handleTypeOnChange}
-                  >
-                    <option value="typeswitcher">Type Switcher</option>
-                    <option id="DVD" value="dvd">
-                      DVD
-                    </option>
-                    <option id="Furniture" value="book">
-                      Book
-                    </option>
-                    <option id="Book" value="furniture">
-                      Furniture
-                    </option>
-                  </select>
-                </td>
-              </tr>
-              <tr className="switchercontainer">
-                <td>
-                  {book && <Book />}
-                  {furniture && <Furniture />}
-                  {dvd && <DVD />}
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="2" align="right">
-                  <button>Save</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div>
+            <div className="divcontainer">
+              <label>SKU </label>
+              <input type="text" name="SKU" onChange={handleChange} required />
+            </div>
+            <div className="divcontainer">
+              <label>Name </label>
+              <input type="text" name="SKU" onChange={handleChange} required />
+            </div>
+            <div className="divcontainer">
+              <label>Price($) </label>
+              <input type="text" name="SKU" onChange={handleChange} required />
+            </div>
+
+            <div className="divcontainer typeswitchcontainer ">
+              <h6 className="smallswitchtype">Type Switcher</h6>
+              <select
+                id="productType"
+                value={type}
+                onChange={handleTypeOnChange}
+              >
+                <option value="typeswitcher">Type Switcher</option>
+                <option id="DVD" value="dvd">
+                  DVD
+                </option>
+                <option id="Furniture" value="book">
+                  Book
+                </option>
+                <option id="Book" value="furniture">
+                  Furniture
+                </option>
+              </select>
+            </div>
+            <div>
+              {book && <Book />}
+              {furniture && <Furniture />}
+              {dvd && <DVD />}
+            </div>
+          </div>
         </form>
       </div>
     </div>

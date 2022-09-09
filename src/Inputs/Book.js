@@ -3,12 +3,16 @@ import React from "react";
 function Book() {
   return (
     <>
-      <input
-        type="text"
-        placeholder="Please provide the weight in KG"
-        id="weight"
-      ></input>
-      <p>Please provide the weight in KG</p>
+      <div className="divcontainer">
+        <label>KG</label>
+        <input
+          type="text"
+          placeholder="Weight in KG"
+          id="weight"
+          required
+        ></input>
+      </div>
+      <p className="typeclass">Please, provide weight</p>
     </>
   );
 }

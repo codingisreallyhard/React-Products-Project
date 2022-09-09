@@ -3,12 +3,11 @@ import React from "react";
 function DVD() {
   return (
     <>
-      <input
-        type="text"
-        placeholder="Please provide the size in MB"
-        id="size"
-      ></input>
-      <p>Please provide the size in MB</p>
+      <div className="divcontainer">
+        <label>MB</label>
+        <input type="text" placeholder="Size in MB" id="size" required></input>
+      </div>
+      <p className="typeclass">Please, provide size</p>
     </>
   );
 }

@@ -3,11 +3,7 @@
 }
 
 .formcontainer {
-  display: flex;
-  background-color: red;
-  flex-direction: row;
-  justify-content: start;
-  align-items: flex-start;
+  background-color: blue;
 }
 
 .switchercontainer {
@@ -20,4 +16,31 @@
 
 #product_form tr {
   padding: 24px;
+}
+
+#product_form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.divcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 24px;
+  gap: 24px;
+}
+
+/* Switch Types CSS classes(weight,size,dimensions)*/
+.typeclass {
+  margin-left: 108px;
+  margin-top: 64px;
+}
+
+.typeswitchcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 24px;
+  gap: 32px;
 }/*# sourceMappingURL=NewProduct.css.map */
