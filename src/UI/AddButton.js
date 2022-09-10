@@ -1,12 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import "../Styles/AddButton.css";
 function AddButton() {
+  const navigate = useNavigate();
+  const navigateTo = () => {
+    navigate("/add-product");
+  };
   return (
-    <ul className="lis">
-      <li>
-        <button className="addbtn">ADD</button>
-      </li>
-    </ul>
+    <button className="addbtn" onClick={navigateTo}>
+      ADD
+    </button>
   );
 }
 

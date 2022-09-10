@@ -6,6 +6,7 @@ import DVD from "../../Inputs/DVD";
 import "../../Styles/NewProduct.css";
 import SaveButton from "../../UI/SaveButton";
 import CancelButton from "../../UI/CancelButton";
+import { useNavigate } from "react-router";
 
 function NewProduct() {
   const [inputs, setInputs] = useState({});
@@ -20,6 +21,7 @@ function NewProduct() {
     type === "book" ? setBook(true) : setBook(false);
     type === "furniture" ? setFurniture(true) : setFurniture(false);
   }, [type]);
+  const navigate = useNavigate();
 
   const handleTypeOnChange = (e) => {
     setType(e.target.value);
@@ -35,6 +37,7 @@ function NewProduct() {
     event.preventDefault();
     console.log(inputs);
     axios.post("http://localhost:8888/api/", inputs);
+    navigate("/");
   };
 
   return (
@@ -106,9 +109,77 @@ function NewProduct() {
                   </select>
                 </div>
                 <div>
-                  {book && <Book />}
-                  {furniture && <Furniture />}
-                  {dvd && <DVD />}
+                  {book && (
+                    <>
+                      <div className="divcontainer">
+                        <label>KG</label>
+                        <input
+                          type="text"
+                          placeholder="Weight in KG"
+                          id="weight"
+                          required
+                          onChange={handleChange}
+                          name="weight"
+                        ></input>
+                      </div>
+                      <p className="typeclass">Please, provide weight</p>
+                    </>
+                  )}
+                  {furniture && (
+                    <>
+                      <div className="divcontainer">
+                        <label>Height</label>
+
+                        <input
+                          type="number"
+                          placeholder="Height in CM"
+                          id="height"
+                          required
+                          name="Height"
+                          onChange={handleChange}
+                        ></input>
+                      </div>
+                      <div className="divcontainer">
+                        <label>Width</label>
+                        <input
+                          type="number"
+                          placeholder=" Width in CM"
+                          id="width"
+                          required
+                          name="Width"
+                          onChange={handleChange}
+                        ></input>
+                      </div>
+                      <div className="divcontainer">
+                        <label>Length</label>
+                        <input
+                          type="number"
+                          placeholder="Length in CM"
+                          id="length"
+                          required
+                          name="Length"
+                          onChange={handleChange}
+                        ></input>
+                      </div>
+                      <p className="typeclass">Please, provide dimensions</p>
+                    </>
+                  )}
+                  {dvd && (
+                    <>
+                      <div className="divcontainer">
+                        <label>MB</label>
+                        <input
+                          type="text"
+                          placeholder="Size in MB"
+                          id="size"
+                          required
+                          name="MB"
+                          onChange={handleChange}
+                        ></input>
+                      </div>
+                      <p className="typeclass">Please, provide size</p>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Book() {
-  
+function Book(props) {
+  console.log(props);
+
   return (
     <>
       <div className="divcontainer">
@@ -11,7 +12,8 @@ function Book() {
           placeholder="Weight in KG"
           id="weight"
           required
-          
+          onChange={(event) => props.onChange(event.target.value)}
+          name="weight"
         ></input>
       </div>
       <p className="typeclass">Please, provide weight</p>

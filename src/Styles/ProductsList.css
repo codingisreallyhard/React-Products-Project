@@ -1,11 +1,42 @@
 /* Variables */
-.containerflex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid black;
+.productlistcontainer {
+  width: 1200px;
 }
 
-.listylenone {
-  text-decoration: none;
+.headercontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.headercontainer .hcontainer {
+  display: flex;
+  flex-direction: row;
+}
+.headercontainer .buttonscontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 24px;
+}
+
+.cardcontainer {
+  border-top: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.cardproductlist {
+  border: 1px solid black;
+  position: relative;
+  padding: 70px;
+  margin: auto;
+  margin-bottom: 4rem;
+  overflow: hidden;
+  width: 70%;
+  max-height: 499px;
+  transition: all 0.4s;
+  margin-top: 24px;
 }/*# sourceMappingURL=ProductsList.css.map */
