@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Book from "../../Inputs/Book";
-import Furniture from "../../Inputs/Furniture";
-import DVD from "../../Inputs/DVD";
+import { useForm } from "react-hook-form";
 import "../../Styles/NewProduct.css";
-import SaveButton from "../../UI/SaveButton";
+
 import CancelButton from "../../UI/CancelButton";
 import { useNavigate } from "react-router";
 
@@ -14,7 +12,11 @@ function NewProduct() {
   const [book, setBook] = useState(false);
   const [furniture, setFurniture] = useState(false);
   const [dvd, setDvd] = useState(false);
-  const [required, isRequired] = useState();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     type === "dvd" ? setDvd(true) : setDvd(false);
@@ -34,15 +36,16 @@ function NewProduct() {
   };
 
   const submitHandler = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     console.log(inputs);
     axios.post("http://localhost:8888/api/", inputs);
     navigate("/");
+    console.log(event);
   };
 
   return (
     <>
-      <form onSubmit={submitHandler} id="product_form">
+      <form onSubmit={handleSubmit(submitHandler)} id="product_form">
         <div>
           <div className="container containeraddproduct mt-4">
             <div className="headercontainer">
@@ -64,31 +67,49 @@ function NewProduct() {
                     type="text"
                     name="SKU"
                     onChange={handleChange}
-                    required
                     placeholder="#sku"
+                    {...register("sku", {
+                      required: "Please, provide the data of indicated type",
+                    })}
                   />
                 </div>
+                {errors.sku && (
+                  <div className="validationerror">{errors.sku.message}</div>
+                )}
                 <div className="divcontainer">
                   <label>Name </label>
                   <input
                     type="text"
                     name="name"
                     onChange={handleChange}
-                    required
                     placeholder="#name"
+                    {...register("name", {
+                      required: "Please, provide the data of indicated type",
+                    })}
                   />
                 </div>
+                {errors.name && (
+                  <div className="validationerror">{errors.name.message}</div>
+                )}
                 <div className="divcontainer">
                   <label>Price($) </label>
                   <input
                     type="text"
                     name="price"
                     onChange={handleChange}
-                    required
                     placeholder="#price"
+                    {...register("price", {
+                      required: "Please, provide the data of indicated type",
+                      pattern: {
+                        value: /^[0-9]*$/,
+                        message: "Please, provide the data of indicated type",
+                      },
+                    })}
                   />
                 </div>
-
+                {errors.price && (
+                  <div className="validationerror">{errors.price.message}</div>
+                )}
                 <div className="divcontainer typeswitchcontainer ">
                   <h6 className="smallswitchtype">Type Switcher</h6>
                   <select
@@ -110,20 +131,29 @@ function NewProduct() {
                 </div>
                 <div>
                   {book && (
-                    <>
+                    <div>
                       <div className="divcontainer">
                         <label>KG</label>
                         <input
                           type="text"
                           placeholder="Weight in KG"
                           id="weight"
-                          required
                           onChange={handleChange}
                           name="weight"
+                          {...register("kg", {
+                            required:
+                              "Please, provide the data of indicated type",
+                          })}
                         ></input>
                       </div>
+                      {errors.kg && (
+                        <div className="validationerror">
+                          {errors.kg.message}
+                        </div>
+                      )}
+
                       <p className="typeclass">Please, provide weight</p>
-                    </>
+                    </div>
                   )}
                   {furniture && (
                     <>
@@ -134,33 +164,57 @@ function NewProduct() {
                           type="number"
                           placeholder="Height in CM"
                           id="height"
-                          required
                           name="Height"
                           onChange={handleChange}
+                          {...register("height", {
+                            required:
+                              "Please, provide the data of indicated type",
+                          })}
                         ></input>
                       </div>
+                      {errors.height && (
+                        <div className="validationerror">
+                          {errors.height.message}
+                        </div>
+                      )}
                       <div className="divcontainer">
                         <label>Width</label>
                         <input
                           type="number"
                           placeholder=" Width in CM"
                           id="width"
-                          required
                           name="Width"
                           onChange={handleChange}
+                          {...register("width", {
+                            required:
+                              "Please, provide the data of indicated type",
+                          })}
                         ></input>
                       </div>
+                      {errors.width && (
+                        <div className="validationerror">
+                          {errors.width.message}
+                        </div>
+                      )}
                       <div className="divcontainer">
                         <label>Length</label>
                         <input
                           type="number"
                           placeholder="Length in CM"
                           id="length"
-                          required
                           name="Length"
                           onChange={handleChange}
+                          {...register("length", {
+                            required:
+                              "Please, provide the data of indicated type",
+                          })}
                         ></input>
                       </div>
+                      {errors.length && (
+                        <div className="validationerror">
+                          {errors.length.message}
+                        </div>
+                      )}
                       <p className="typeclass">Please, provide dimensions</p>
                     </>
                   )}
@@ -172,9 +226,12 @@ function NewProduct() {
                           type="text"
                           placeholder="Size in MB"
                           id="size"
-                          required
                           name="MB"
                           onChange={handleChange}
+                          {...register("mb", {
+                            required:
+                              "Please, provide the data of indicated type",
+                          })}
                         ></input>
                       </div>
                       <p className="typeclass">Please, provide size</p>
