@@ -16,22 +16,26 @@ function ProductsList() {
           </div>
         </div>
         <div className="cardcontainer">
-          <div className="cardproductlist delete-checkbox">
+          <div className="cardproductlist ">
             {" "}
-            <input type="checkbox"></input>
+            <input type="checkbox" className="delete-checkbox"></input>
             Boilerplate code
           </div>
-          <div className="cardproductlist delete-checkbox">
-            <input type="checkbox"></input> Boilerplate code
+          <div className="cardproductlist ">
+            <input type="checkbox" className="delete-checkbox"></input>{" "}
+            Boilerplate code
           </div>
-          <div className="cardproductlist delete-checkbox">
-            <input type="checkbox"></input> Boilerplate code
+          <div className="cardproductlist ">
+            <input type="checkbox" className="delete-checkbox"></input>{" "}
+            Boilerplate code
           </div>
-          <div className="cardproductlist delete-checkbox">
-            <input type="checkbox"></input> Boilerplate code
+          <div className="cardproductlist ">
+            <input type="checkbox" className="delete-checkbox"></input>{" "}
+            Boilerplate code
           </div>
-          <div className="cardproductlist delete-checkbox">
-            <input type="checkbox"></input> Boilerplate code
+          <div className="cardproductlist ">
+            <input type="checkbox" className="delete-checkbox"></input>{" "}
+            Boilerplate code
           </div>
         </div>
       </div>
