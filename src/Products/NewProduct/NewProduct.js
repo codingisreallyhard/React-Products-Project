@@ -7,7 +7,16 @@ import CancelButton from "../../UI/CancelButton";
 import { useNavigate } from "react-router";
 
 function NewProduct() {
-  const [inputs, setInputs] = useState({ name: "", sku: "", price: "" });
+  const [inputs, setInputs] = useState({
+    name: "",
+    sku: "",
+    price: "",
+    kg: "",
+    mb: "",
+    width: "",
+    length: "",
+    height: "",
+  });
 
   const [type, setType] = useState("typeswitcher");
   const [book, setBook] = useState(false);
@@ -43,9 +52,14 @@ function NewProduct() {
         name: inputs.name,
         sku: inputs.sku,
         price: inputs.price,
+        kg: inputs.kg,
+        mb: inputs.mb,
+        width: inputs.width,
+        height: inputs.height,
+        length: inputs.length,
       })
       .then(() => {
-        console.log("y");
+        console.log("Added");
       });
     navigate("/");
   };
@@ -108,7 +122,7 @@ function NewProduct() {
                     name="price"
                     onChange={handleChange}
                     placeholder="#price"
-                    // {...register("price", {
+                    // {...register("price1", {
                     //   required: "Please, submit required data",
                     //   pattern: {
                     //     value: /^[0-9]*$/,
@@ -150,14 +164,14 @@ function NewProduct() {
                           id="weight"
                           onChange={handleChange}
                           name="weight"
-                          {...register("kg", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
+                          // {...register("kg1", {
+                          //   required: "Please, submit required data",
+                          //   pattern: {
+                          //     value: /^[0-9]*$/,
+                          //     message:
+                          //       "Please, provide the data of indicated type",
+                          //   },
+                          // })}
                         ></input>
                       </div>
                       {errors.kg && (
@@ -175,19 +189,20 @@ function NewProduct() {
                         <label>Height</label>
 
                         <input
+                          value={inputs.height}
                           type="text"
                           placeholder="Height in CM"
                           id="height"
                           name="height"
                           onChange={handleChange}
-                          {...register("height", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
+                          // {...register("height1", {
+                          //   required: "Please, submit required data",
+                          //   pattern: {
+                          //     value: /^[0-9]*$/,
+                          //     message:
+                          //       "Please, provide the data of indicated type",
+                          //   },
+                          // })}
                         ></input>
                       </div>
                       {errors.height && (
@@ -198,19 +213,20 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>Width</label>
                         <input
+                          value={inputs.width}
                           type="text"
                           placeholder=" Width in CM"
                           id="width"
                           name="width"
                           onChange={handleChange}
-                          {...register("width", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
+                          // {...register("width1", {
+                          //   required: "Please, submit required data",
+                          //   pattern: {
+                          //     value: /^[0-9]*$/,
+                          //     message:
+                          //       "Please, provide the data of indicated type",
+                          //   },
+                          // })}
                         ></input>
                       </div>
                       {errors.width && (
@@ -221,19 +237,20 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>Length</label>
                         <input
+                          value={inputs.length}
                           type="text"
                           placeholder="Length in CM"
                           id="length"
                           name="length"
                           onChange={handleChange}
-                          {...register("length", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
+                          // {...register("length1", {
+                          //   required: "Please, submit required data",
+                          //   pattern: {
+                          //     value: /^[0-9]*$/,
+                          //     message:
+                          //       "Please, provide the data of indicated type",
+                          //   },
+                          // })}
                         ></input>
                       </div>
                       {errors.length && (
@@ -249,19 +266,20 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>MB</label>
                         <input
+                          value={inputs.mb}
                           type="text"
                           placeholder="Size in MB"
                           id="size"
-                          name="MB"
+                          name="mb"
                           onChange={handleChange}
-                          {...register("mb", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
+                          // {...register("mb1", {
+                          //   required: "Please, submit required data",
+                          //   pattern: {
+                          //     value: /^[0-9]*$/,
+                          //     message:
+                          //       "Please, provide the data of indicated type",
+                          //   },
+                          // })}
                         ></input>
                       </div>
                       {errors.mb && (
