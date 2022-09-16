@@ -1,13 +1,16 @@
 const express = require("express");
-
+const cors = require("cors");
 const app = express();
+const mysql = require("mysql");
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "root",
+  password: "password",
   database: "products",
 });
-const cors = require("cors");
+app.use(cors());
+app.use(express.json());
+
 app.post("/create", (req, res) => {
   const name = req.body.name;
   const sku = req.body.sku;
@@ -25,7 +28,6 @@ app.post("/create", (req, res) => {
   );
 });
 
-const mysql = require("mysql");
 app.listen(3001, () => {
   console.log("ye");
 });

@@ -7,11 +7,8 @@ import CancelButton from "../../UI/CancelButton";
 import { useNavigate } from "react-router";
 
 function NewProduct() {
-  const [inputs, setInputs] = useState({
-    name: "",
-    sku: "",
-    price: "",
-  });
+  const [inputs, setInputs] = useState({ name: "", sku: "", price: "" });
+
   const [type, setType] = useState("typeswitcher");
   const [book, setBook] = useState(false);
   const [furniture, setFurniture] = useState(false);
@@ -38,12 +35,11 @@ function NewProduct() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-
-  const submitHandler = (event) => {
+  const submitHandler = () => {
     // event.preventDefault();
     console.log(inputs);
     axios
-      .post("http://localhost:8889/create", {
+      .post("http://localhost:3001/create", {
         name: inputs.name,
         sku: inputs.sku,
         price: inputs.price,
@@ -52,7 +48,6 @@ function NewProduct() {
         console.log("y");
       });
     navigate("/");
-    console.log(event);
   };
 
   return (
@@ -76,13 +71,14 @@ function NewProduct() {
                 <div className="divcontainer">
                   <label>SKU </label>
                   <input
+                    value={inputs.sku}
                     type="text"
-                    name="SKU"
+                    name="sku"
                     onChange={handleChange}
-                    placeholder="#sku"
-                    {...register("sku", {
-                      required: "Please, submit required data",
-                    })}
+                    // placeholder="#sku"
+                    // {...register("sku", {
+                    //   required: "Please, submit required data",
+                    // })}
                   />
                 </div>
                 {errors.sku && (
@@ -91,13 +87,14 @@ function NewProduct() {
                 <div className="divcontainer">
                   <label>Name </label>
                   <input
+                    value={inputs.name}
                     type="text"
                     name="name"
                     onChange={handleChange}
                     placeholder="#name"
-                    {...register("name", {
-                      required: "Please, submit required data",
-                    })}
+                    // {...register("name", {
+                    //   required: "Please, submit required data",
+                    // })}
                   />
                 </div>
                 {errors.name && (
@@ -106,17 +103,18 @@ function NewProduct() {
                 <div className="divcontainer">
                   <label>Price($) </label>
                   <input
+                    value={inputs.price}
                     type="text"
                     name="price"
                     onChange={handleChange}
                     placeholder="#price"
-                    {...register("price", {
-                      required: "Please, submit required data",
-                      pattern: {
-                        value: /^[0-9]*$/,
-                        message: "Please, provide the data of indicated type",
-                      },
-                    })}
+                    // {...register("price", {
+                    //   required: "Please, submit required data",
+                    //   pattern: {
+                    //     value: /^[0-9]*$/,
+                    //     message: "Please, provide the data of indicated type",
+                    //   },
+                    // })}
                   />
                 </div>
                 {errors.price && (
@@ -180,7 +178,7 @@ function NewProduct() {
                           type="text"
                           placeholder="Height in CM"
                           id="height"
-                          name="Height"
+                          name="height"
                           onChange={handleChange}
                           {...register("height", {
                             required: "Please, submit required data",
@@ -203,7 +201,7 @@ function NewProduct() {
                           type="text"
                           placeholder=" Width in CM"
                           id="width"
-                          name="Width"
+                          name="width"
                           onChange={handleChange}
                           {...register("width", {
                             required: "Please, submit required data",
@@ -226,7 +224,7 @@ function NewProduct() {
                           type="text"
                           placeholder="Length in CM"
                           id="length"
-                          name="Length"
+                          name="length"
                           onChange={handleChange}
                           {...register("length", {
                             required: "Please, submit required data",
