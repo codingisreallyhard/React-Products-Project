@@ -7,7 +7,11 @@ import CancelButton from "../../UI/CancelButton";
 import { useNavigate } from "react-router";
 
 function NewProduct() {
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({
+    name: "",
+    sku: "",
+    price: "",
+  });
   const [type, setType] = useState("typeswitcher");
   const [book, setBook] = useState(false);
   const [furniture, setFurniture] = useState(false);
@@ -38,7 +42,15 @@ function NewProduct() {
   const submitHandler = (event) => {
     // event.preventDefault();
     console.log(inputs);
-    axios.post("http://localhost:8888/api/", inputs);
+    axios
+      .post("http://localhost:8889/create", {
+        name: inputs.name,
+        sku: inputs.sku,
+        price: inputs.price,
+      })
+      .then(() => {
+        console.log("y");
+      });
     navigate("/");
     console.log(event);
   };
