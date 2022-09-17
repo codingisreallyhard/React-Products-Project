@@ -264,7 +264,7 @@ function NewProduct() {
                                 "Please, provide the data of indicated type",
                             },
                           })}
-                        ></input>
+                        />
                       </div>
                       {errors.length && (
                         <div className="validationerror">
