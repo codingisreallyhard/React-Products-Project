@@ -15,19 +15,19 @@ app.post("/create", (req, res) => {
   const name = req.body.name;
   const sku = req.body.sku;
   const price = req.body.price;
-  const kg = req.body.kg;
-  const mb = req.body.mb;
-  const width = req.body.width;
-  const height = req.body.width;
-  const length = req.body.length;
-  console.log(mb);
-  console.log(kg);
+  // const kg = req.body.kg;
+  // const mb = req.body.mb;
+  // const width = req.body.width;
+  // const height = req.body.width;
+  // const length = req.body.length;
+  // console.log(mb);
+  // console.log(kg);
   console.log(price);
   console.log(sku);
   console.log(name);
   db.query(
-    "INSERT INTO products (name,sku,price,kg,mb,width,height,length) VALUES(?,?,?,?,?,?,?,?)",
-    [name, sku, price, kg, mb, width, height, length],
+    "INSERT INTO products (name,sku,price) VALUES(?,?,?)",
+    [name, sku, price],
     (err, result) => {
       if (err) {
         console.log(err);

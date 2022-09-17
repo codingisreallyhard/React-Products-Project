@@ -25,12 +25,13 @@ function NewProduct() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
       sku: "",
       name: "",
-      price: "",
+      price: 0,
     },
   });
 
@@ -45,8 +46,6 @@ function NewProduct() {
     setType(e.target.value);
   };
 
-  console.log(register);
-
   const handleChange = (event) => {
     event.persist();
     const name = event.target.name;
@@ -56,21 +55,23 @@ function NewProduct() {
   const submitHandler = (event) => {
     // event.preventDefault();
     console.log(inputs);
+    const data = event;
     axios
       .post("http://localhost:3001/create", {
-        name: inputs.name,
-        sku: inputs.sku,
-        price: inputs.price,
-        kg: inputs.kg,
-        mb: inputs.mb,
-        width: inputs.width,
-        height: inputs.height,
-        length: inputs.length,
+        name: data.name,
+        sku: data.sku,
+        price: data.price,
+        kg: data.kg,
+        mb: data.mb,
+        width: data.width,
+        height: data.height,
+        length: data.length,
       })
       .then(() => {
         console.log("Added");
       });
-    console.log(event);
+    console.log(data.name);
+    console.log(data);
     navigate("/");
   };
 
@@ -100,13 +101,13 @@ function NewProduct() {
                     name="sku"
                     onChange={handleChange}
                     placeholder="#sku"
-                    {...register("sku2", {
+                    {...register("sku", {
                       required: "Please, submit required data",
                     })}
                   />
                 </div>
                 {errors.sku2 && (
-                  <div className="validationerror">{errors.sku2.required}</div>
+                  <div className="validationerror">{errors.sku.message}</div>
                 )}
                 <div className="divcontainer">
                   <label>Name </label>
@@ -117,37 +118,33 @@ function NewProduct() {
                     name="name"
                     onChange={handleChange}
                     placeholder="#name"
-                    {...register("name2", {
+                    {...register("name", {
                       required: "Please, submit required data",
                     })}
                   />
                 </div>
-                {errors.name2 && (
-                  <div className="validationerror">
-                    Please, submit required data
-                  </div>
+                {errors.name && (
+                  <div className="validationerror">{errors.name.message}</div>
                 )}
                 <div className="divcontainer">
                   <label>Price($) </label>
                   <input
-                    value={inputs.price}
+                    // value={inputs.price}
                     type="text"
                     name="price"
                     onChange={handleChange}
                     placeholder="#price"
-                    // {...register("price1", {
-                    //   required: "Please, submit required data",
-                    //   pattern: {
-                    //     value: /^[0-9]*$/,
-                    //     message: "Please, provide the data of indicated type",
-                    //   },
-                    // })}
+                    {...register("price", {
+                      required: "Please, submit required data",
+                      pattern: {
+                        value: /^[0-9]*$/,
+                        message: "Please, provide the data of indicated type",
+                      },
+                    })}
                   />
                 </div>
                 {errors.price && (
-                  <div className="validationerror">
-                    Please, submit required data
-                  </div>
+                  <div className="validationerror">{errors.price.message}</div>
                 )}
                 <div className="divcontainer typeswitchcontainer ">
                   <h6 className="smallswitchtype">Type Switcher</h6>
@@ -174,20 +171,20 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>KG</label>
                         <input
-                          value={inputs.kg}
+                          // value={inputs.kg}
                           type="number"
                           placeholder="Weight in KG"
                           id="kg"
                           onChange={handleChange}
                           name="kg"
-                          // {...register("kg1", {
-                          //   required: "Please, submit required data",
-                          //   pattern: {
-                          //     value: /^[0-9]*$/,
-                          //     message:
-                          //       "Please, provide the data of indicated type",
-                          //   },
-                          // })}
+                          {...register("kg", {
+                            required: "Please, submit required data",
+                            pattern: {
+                              value: /^[0-9]*$/,
+                              message:
+                                "Please, provide the data of indicated type",
+                            },
+                          })}
                         ></input>
                       </div>
                       {errors.kg && (
@@ -205,20 +202,20 @@ function NewProduct() {
                         <label>Height</label>
 
                         <input
-                          value={inputs.height}
+                          // value={inputs.height}
                           type="number"
                           placeholder="Height in CM"
                           id="height"
                           name="height"
                           onChange={handleChange}
-                          // {...register("height1", {
-                          //   required: "Please, submit required data",
-                          //   pattern: {
-                          //     value: /^[0-9]*$/,
-                          //     message:
-                          //       "Please, provide the data of indicated type",
-                          //   },
-                          // })}
+                          {...register("height", {
+                            required: "Please, submit required data",
+                            pattern: {
+                              value: /^[0-9]*$/,
+                              message:
+                                "Please, provide the data of indicated type",
+                            },
+                          })}
                         ></input>
                       </div>
                       {errors.height && (
@@ -229,20 +226,20 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>Width</label>
                         <input
-                          value={inputs.width}
+                          // value={inputs.width}
                           type="number"
                           placeholder=" Width in CM"
                           id="width"
                           name="width"
                           onChange={handleChange}
-                          // {...register("width1", {
-                          //   required: "Please, submit required data",
-                          //   pattern: {
-                          //     value: /^[0-9]*$/,
-                          //     message:
-                          //       "Please, provide the data of indicated type",
-                          //   },
-                          // })}
+                          {...register("width", {
+                            required: "Please, submit required data",
+                            pattern: {
+                              value: /^[0-9]*$/,
+                              message:
+                                "Please, provide the data of indicated type",
+                            },
+                          })}
                         ></input>
                       </div>
                       {errors.width && (
@@ -253,20 +250,20 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>Length</label>
                         <input
-                          value={inputs.length}
+                          // value={inputs.length}
                           type="number"
                           placeholder="Length in CM"
                           id="length"
                           name="length"
                           onChange={handleChange}
-                          // {...register("length1", {
-                          //   required: "Please, submit required data",
-                          //   pattern: {
-                          //     value: /^[0-9]*$/,
-                          //     message:
-                          //       "Please, provide the data of indicated type",
-                          //   },
-                          // })}
+                          {...register("length", {
+                            required: "Please, submit required data",
+                            pattern: {
+                              value: /^[0-9]*$/,
+                              message:
+                                "Please, provide the data of indicated type",
+                            },
+                          })}
                         ></input>
                       </div>
                       {errors.length && (
@@ -282,20 +279,20 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>MB</label>
                         <input
-                          value={inputs.mb}
+                          // value={inputs.mb}
                           type="number"
                           placeholder="Size in MB"
                           id="size"
                           name="mb"
                           onChange={handleChange}
-                          // {...register("mb1", {
-                          //   required: "Please, submit required data",
-                          //   pattern: {
-                          //     value: /^[0-9]*$/,
-                          //     message:
-                          //       "Please, provide the data of indicated type",
-                          //   },
-                          // })}
+                          {...register("mb", {
+                            required: "Please, submit required data",
+                            pattern: {
+                              value: /^[0-9]*$/,
+                              message:
+                                "Please, provide the data of indicated type",
+                            },
+                          })}
                         ></input>
                       </div>
                       {errors.mb && (
