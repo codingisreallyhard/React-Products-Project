@@ -5,7 +5,7 @@ const mysql = require("mysql");
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "password",
+  password: "",
   database: "products",
 });
 app.use(cors());
@@ -20,7 +20,11 @@ app.post("/create", (req, res) => {
   const width = req.body.width;
   const height = req.body.width;
   const length = req.body.length;
-
+  console.log(mb);
+  console.log(kg);
+  console.log(price);
+  console.log(sku);
+  console.log(name);
   db.query(
     "INSERT INTO products (name,sku,price,kg,mb,width,height,length) VALUES(?,?,?,?,?,?,?,?)",
     [name, sku, price, kg, mb, width, height, length],
@@ -37,3 +41,5 @@ app.post("/create", (req, res) => {
 app.listen(3001, () => {
   console.log("ye");
 });
+
+// kg, mb, width, height, length

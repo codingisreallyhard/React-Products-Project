@@ -10,12 +10,12 @@ function NewProduct() {
   const [inputs, setInputs] = useState({
     name: "",
     sku: "",
-    price: "",
-    kg: "",
-    mb: "",
-    width: "",
-    length: "",
-    height: "",
+    price: 0,
+    kg: 0,
+    mb: 0,
+    width: 0,
+    length: 0,
+    height: 0,
   });
 
   const [type, setType] = useState("typeswitcher");
@@ -26,7 +26,13 @@ function NewProduct() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      sku: "",
+      name: "",
+      price: "",
+    },
+  });
 
   useEffect(() => {
     type === "dvd" ? setDvd(true) : setDvd(false);
@@ -39,12 +45,15 @@ function NewProduct() {
     setType(e.target.value);
   };
 
+  console.log(register);
+
   const handleChange = (event) => {
+    event.persist();
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-  const submitHandler = () => {
+  const submitHandler = (event) => {
     // event.preventDefault();
     console.log(inputs);
     axios
@@ -61,6 +70,7 @@ function NewProduct() {
       .then(() => {
         console.log("Added");
       });
+    console.log(event);
     navigate("/");
   };
 
@@ -85,34 +95,37 @@ function NewProduct() {
                 <div className="divcontainer">
                   <label>SKU </label>
                   <input
-                    value={inputs.sku}
+                    // value={inputs.sku}
                     type="text"
                     name="sku"
                     onChange={handleChange}
-                    // placeholder="#sku"
-                    // {...register("sku", {
-                    //   required: "Please, submit required data",
-                    // })}
+                    placeholder="#sku"
+                    {...register("sku2", {
+                      required: "Please, submit required data",
+                    })}
                   />
                 </div>
-                {errors.sku && (
-                  <div className="validationerror">{errors.sku.message}</div>
+                {errors.sku2 && (
+                  <div className="validationerror">{errors.sku2.required}</div>
                 )}
                 <div className="divcontainer">
                   <label>Name </label>
                   <input
-                    value={inputs.name}
+                    // defaultValue={}
+                    // value={inputs.name}
                     type="text"
                     name="name"
                     onChange={handleChange}
                     placeholder="#name"
-                    // {...register("name", {
-                    //   required: "Please, submit required data",
-                    // })}
+                    {...register("name2", {
+                      required: "Please, submit required data",
+                    })}
                   />
                 </div>
-                {errors.name && (
-                  <div className="validationerror">{errors.name.message}</div>
+                {errors.name2 && (
+                  <div className="validationerror">
+                    Please, submit required data
+                  </div>
                 )}
                 <div className="divcontainer">
                   <label>Price($) </label>
@@ -132,7 +145,9 @@ function NewProduct() {
                   />
                 </div>
                 {errors.price && (
-                  <div className="validationerror">{errors.price.message}</div>
+                  <div className="validationerror">
+                    Please, submit required data
+                  </div>
                 )}
                 <div className="divcontainer typeswitchcontainer ">
                   <h6 className="smallswitchtype">Type Switcher</h6>
@@ -159,11 +174,12 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>KG</label>
                         <input
-                          type="text"
+                          value={inputs.kg}
+                          type="number"
                           placeholder="Weight in KG"
-                          id="weight"
+                          id="kg"
                           onChange={handleChange}
-                          name="weight"
+                          name="kg"
                           // {...register("kg1", {
                           //   required: "Please, submit required data",
                           //   pattern: {
@@ -190,7 +206,7 @@ function NewProduct() {
 
                         <input
                           value={inputs.height}
-                          type="text"
+                          type="number"
                           placeholder="Height in CM"
                           id="height"
                           name="height"
@@ -214,7 +230,7 @@ function NewProduct() {
                         <label>Width</label>
                         <input
                           value={inputs.width}
-                          type="text"
+                          type="number"
                           placeholder=" Width in CM"
                           id="width"
                           name="width"
@@ -238,7 +254,7 @@ function NewProduct() {
                         <label>Length</label>
                         <input
                           value={inputs.length}
-                          type="text"
+                          type="number"
                           placeholder="Length in CM"
                           id="length"
                           name="length"
@@ -267,7 +283,7 @@ function NewProduct() {
                         <label>MB</label>
                         <input
                           value={inputs.mb}
-                          type="text"
+                          type="number"
                           placeholder="Size in MB"
                           id="size"
                           name="mb"
