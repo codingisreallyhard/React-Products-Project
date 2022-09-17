@@ -7,16 +7,7 @@ import CancelButton from "../../UI/CancelButton";
 import { useNavigate } from "react-router";
 
 function NewProduct() {
-  const [inputs, setInputs] = useState({
-    name: "",
-    sku: "",
-    price: 0,
-    kg: 0,
-    mb: 0,
-    width: 0,
-    length: 0,
-    height: 0,
-  });
+  const [inputs, setInputs] = useState({});
 
   const [type, setType] = useState("typeswitcher");
   const [book, setBook] = useState(false);
@@ -31,7 +22,7 @@ function NewProduct() {
     defaultValues: {
       sku: "",
       name: "",
-      price: 0,
+      price: "",
     },
   });
 
@@ -70,11 +61,13 @@ function NewProduct() {
       .then(() => {
         console.log("Added");
       });
+
     console.log(data.name);
     console.log(data);
     navigate("/");
   };
 
+  console.log(inputs);
   return (
     <>
       <form onSubmit={handleSubmit(submitHandler)} id="product_form">
@@ -106,7 +99,7 @@ function NewProduct() {
                     })}
                   />
                 </div>
-                {errors.sku2 && (
+                {errors.sku && (
                   <div className="validationerror">{errors.sku.message}</div>
                 )}
                 <div className="divcontainer">

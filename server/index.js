@@ -42,4 +42,13 @@ app.listen(3001, () => {
   console.log("ye");
 });
 
+app.get("/products", (req, res) => {
+  db.query("SELECT * FROM products", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
 // kg, mb, width, height, length
