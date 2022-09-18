@@ -27,16 +27,7 @@ function ProductsList() {
         </div>
         <div className="cardcontainer">
           {data.map((val, key) => {
-            return (
-              <>
-                <input type="checkbox" value={val.sku} />
-                <div className="">
-                  {val.sku}
-                  {val.name}
-                  {val.price}
-                </div>
-              </>
-            );
+            return <div></div>;
           })}
         </div>
       </div>
@@ -45,3 +36,17 @@ function ProductsList() {
 }
 
 export default ProductsList;
+
+<div className="cardproductlist"></div>;
+
+{
+  /* <input type="checkbox" value={val.sku} /> */
+}
+
+{
+  /* <span> {val.name}</span> */
+}
+{
+  /* <span> {val.price}</span> */
+}
+//  <span>{val.sku}</span>

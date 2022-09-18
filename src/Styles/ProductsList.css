@@ -39,4 +39,18 @@
   max-height: 499px;
   transition: all 0.4s;
   margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.valuescontainer {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.valuescontainercheckbox {
+  display: flex;
+  justify-items: start;
+  justify-content: start;
 }/*# sourceMappingURL=ProductsList.css.map */
