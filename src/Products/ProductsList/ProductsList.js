@@ -11,8 +11,13 @@ function ProductsList() {
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((response) => {
       setData(response.data);
+      console.log(data);
     });
   }, []);
+
+  const deleteData = (id) => {
+    axios.delete(`http://localhost:3001/delete/${id}`);
+  };
 
   return (
     <>
@@ -27,7 +32,31 @@ function ProductsList() {
         </div>
         <div className="cardcontainer">
           {data.map((val, key) => {
-            return <div></div>;
+            return (
+              <div className="cardproductlist">
+                <div className="valuescontainercheckbox pt-4 ml-3">
+                  <input type="checkbox" value={val.sku} />
+                </div>
+                <div className="valuescontainer">
+                  <span> {val.name}</span>
+                </div>
+                <div className="valuescontainer">
+                  <span> {val.price}$</span>
+                </div>
+                <div className="valuescontainer">
+                  <span>{val.sku}</span>
+                </div>
+                <div className="valuescontainer">
+                  <span className="pb-5">
+                    {val.kg}
+                    {val.mb}
+                    {val.width}
+                    {val.height}
+                    {val.length}
+                  </span>
+                </div>
+              </div>
+            );
           })}
         </div>
       </div>

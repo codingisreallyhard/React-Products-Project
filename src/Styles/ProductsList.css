@@ -31,26 +31,25 @@
 .cardproductlist {
   border: 1px solid black;
   position: relative;
-  padding: 70px;
   margin: auto;
   margin-bottom: 4rem;
   overflow: hidden;
-  width: 70%;
+  width: 85%;
   max-height: 499px;
   transition: all 0.4s;
   margin-top: 24px;
-  display: flex;
-  flex-direction: column;
 }
 
 .valuescontainer {
   display: flex;
   align-items: center;
   justify-items: center;
+  justify-content: center;
 }
 
 .valuescontainercheckbox {
   display: flex;
-  justify-items: start;
-  justify-content: start;
+  justify-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 18px;
 }/*# sourceMappingURL=ProductsList.css.map */
