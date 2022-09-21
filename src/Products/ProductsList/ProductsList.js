@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import axios from "axios";
 function ProductsList() {
   const [data, setData] = useState([]);
-  const [checked, setChecked0] = useState();
+  const [checked, setChecked] = useState();
 
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((response) => {
@@ -15,9 +15,18 @@ function ProductsList() {
     });
   }, []);
 
-  const deleteData = (id) => {
-    axios.delete(`http://localhost:3001/delete/${id}`);
-  };
+  // const deleteData = (sku) => {
+  //   axios.delete(`http://localhost:3001/delete/${sku}`);
+  // };
+
+  // const deleteProductById = () => {
+  //   products.forEach((product) => {
+  // if (product.select) {
+  // "fetch the product.id(use whatever api fetch methods"
+  //  .then((res) => {
+  //  console.log(res.data);
+  //   getProducts();
+  //  })}});
 
   return (
     <>
@@ -48,7 +57,7 @@ function ProductsList() {
                 </div>
                 <div className="valuescontainer">
                   <span className="pb-5">
-                    {val.kg}
+                    {<span>Weight:</span> && val.kg}
                     {val.mb}
                     {val.width}
                     {val.height}
