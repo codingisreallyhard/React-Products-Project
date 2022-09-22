@@ -6,9 +6,9 @@ import { useEffect } from "react";
 import axios from "axios";
 function ProductsList() {
   const [data, setData] = useState([]);
-  const [checked, setChecked] = useState();
+  const [products, setProducts] = useState([]);
 
-  useEffect(() => {
+  const getProducts = useEffect(() => {
     axios.get("http://localhost:3001/products").then((response) => {
       setData(response.data);
       console.log(data);
@@ -21,12 +21,25 @@ function ProductsList() {
 
   // const deleteProductById = () => {
   //   products.forEach((product) => {
-  // if (product.select) {
-  // "fetch the product.id(use whatever api fetch methods"
-  //  .then((res) => {
-  //  console.log(res.data);
-  //   getProducts();
-  //  })}});
+  //     if (product.select) {
+  //       axios.delete(`http://localhost:3001/delete/`).then((res) => {
+  //         console.log(res.data);
+  //         getProducts();
+  //       });
+  //     }
+  //   });
+  // };
+
+  const deleteProductById = () => {
+    let sku = [];
+    products.forEach((p) => {
+      if (p.select) {
+        sku.push(p.sku);
+      }
+    });
+    axios.delete(`http://localhost:3001/delete/${sku}`);
+    console.log(sku);
+  };
 
   return (
     <>
@@ -36,36 +49,96 @@ function ProductsList() {
             <h1>Product List</h1>
           </div>
           <div className="buttonscontainer">
-            <AddButton /> <MassDeleteButton />
+            <AddButton />
+            <button
+              onClick={() => {
+                deleteProductById();
+              }}
+            >
+              MASS DELETE
+            </button>
           </div>
         </div>
         <div className="cardcontainer">
           {data.map((val, key) => {
-            return (
-              <div className="cardproductlist">
-                <div className="valuescontainercheckbox pt-4 ml-3">
-                  <input type="checkbox" value={val.sku} />
+            if (val.kg) {
+              return (
+                <div className="cardproductlist">
+                  <div className="valuescontainercheckbox pt-4 ml-3">
+                    <input
+                      type="checkbox"
+                      value={val.sku}
+                      name={val.sku}
+                      onChange={(e) => {
+                        products.select = e.target.checked;
+                        setProducts(products);
+                        console.log(products);
+                      }}
+                    />
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.name}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.price}$</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span>{val.sku}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span className="pb-5">
+                      <span>Weight: {val.kg} KG</span>
+                    </span>
+                  </div>
                 </div>
-                <div className="valuescontainer">
-                  <span> {val.name}</span>
+              );
+            } else if (val.mb) {
+              return (
+                <div className="cardproductlist">
+                  <div className="valuescontainercheckbox pt-4 ml-3">
+                    <input type="checkbox" value={val.sku} />
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.name}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.price}$</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span>{val.sku}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span className="pb-5">
+                      <span>Size: {val.mb} MB</span>
+                    </span>
+                  </div>
                 </div>
-                <div className="valuescontainer">
-                  <span> {val.price}$</span>
+              );
+            } else if (val.length) {
+              return (
+                <div className="cardproductlist">
+                  <div className="valuescontainercheckbox pt-4 ml-3">
+                    <input type="checkbox" value={val.sku} />
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.name}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.price}$</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span>{val.sku}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span className="pb-5">
+                      <span>
+                        Dimensions: {val.length}x{val.width}x{val.height}
+                      </span>
+                    </span>
+                  </div>
                 </div>
-                <div className="valuescontainer">
-                  <span>{val.sku}</span>
-                </div>
-                <div className="valuescontainer">
-                  <span className="pb-5">
-                    {<span>Weight:</span> && val.kg}
-                    {val.mb}
-                    {val.width}
-                    {val.height}
-                    {val.length}
-                  </span>
-                </div>
-              </div>
-            );
+              );
+            }
           })}
         </div>
       </div>
@@ -74,17 +147,3 @@ function ProductsList() {
 }
 
 export default ProductsList;
-
-<div className="cardproductlist"></div>;
-
-{
-  /* <input type="checkbox" value={val.sku} /> */
-}
-
-{
-  /* <span> {val.name}</span> */
-}
-{
-  /* <span> {val.price}</span> */
-}
-//  <span>{val.sku}</span>

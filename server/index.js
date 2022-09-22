@@ -20,8 +20,7 @@ app.post("/create", (req, res) => {
   const width = req.body.width;
   const height = req.body.width;
   const length = req.body.length;
-  // console.log(mb);
-  // console.log(kg);
+
   console.log(price);
   console.log(sku);
   console.log(name);
