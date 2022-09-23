@@ -30,16 +30,16 @@ function ProductsList() {
   //   });
   // };
 
-  const deleteProductById = () => {
-    let sku = [];
-    products.forEach((p) => {
-      if (p.select) {
-        sku.push(p.sku);
-      }
-    });
-    axios.delete(`http://localhost:3001/delete/${sku}`);
-    console.log(sku);
-  };
+  // const deleteProductById = () => {
+  //   let sku = [];
+  //   products.forEach((p) => {
+  //     if (p.select) {
+  //       sku.push(p.sku);
+  //     }
+  //   });
+  //   axios.delete(`http://localhost:3001/delete/${sku}`);
+  //   console.log(sku);
+  // };
 
   return (
     <>
@@ -51,9 +51,9 @@ function ProductsList() {
           <div className="buttonscontainer">
             <AddButton />
             <button
-              onClick={() => {
-                deleteProductById();
-              }}
+            // onClick={() => {
+            //   deleteProductById();
+            // }}
             >
               MASS DELETE
             </button>
