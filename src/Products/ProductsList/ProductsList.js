@@ -11,7 +11,6 @@ function ProductsList() {
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((response) => {
       setData(response.data);
-      console.log(data);
     });
   }, []);
 
@@ -28,6 +27,17 @@ function ProductsList() {
   //   getProducts();
   //  })}});
 
+  const deleteSku = () => {
+    let arraysku = [];
+    data.forEach((d) => {
+      if (d.select) {
+        arraysku.push(d.sku);
+      }
+    });
+    console.log(arraysku);
+    axios.delete(`http://localhost:3001/delete/${arraysku}`);
+  };
+
   return (
     <>
       <div className="container productlistcontainer mt-4">
@@ -36,7 +46,14 @@ function ProductsList() {
             <h1>Product List</h1>
           </div>
           <div className="buttonscontainer">
-            <AddButton /> <MassDeleteButton />
+            <AddButton />{" "}
+            <button
+              onClick={() => {
+                deleteSku();
+              }}
+            >
+              MASS DELETE
+            </button>
           </div>
         </div>
         <div className="cardcontainer">
@@ -44,7 +61,18 @@ function ProductsList() {
             return (
               <div className="cardproductlist">
                 <div className="valuescontainercheckbox pt-4 ml-3">
-                  <input type="checkbox" value={val.sku} />
+                  <input
+                    type="checkbox"
+                    onChange={(e) => {
+                      let value = e.target.checked;
+                      setData(
+                        data.map((d) => {
+                          d.select = value;
+                          return d;
+                        })
+                      );
+                    }}
+                  />
                 </div>
                 <div className="valuescontainer">
                   <span> {val.name}</span>
@@ -77,14 +105,14 @@ export default ProductsList;
 
 <div className="cardproductlist"></div>;
 
-{
-  /* <input type="checkbox" value={val.sku} /> */
-}
+// {
+//   /* <input type="checkbox" value={val.sku} /> */
+// }
 
-{
-  /* <span> {val.name}</span> */
-}
-{
-  /* <span> {val.price}</span> */
-}
-//  <span>{val.sku}</span>
+// {
+//   /* <span> {val.name}</span> */
+// }
+// {
+//   /* <span> {val.price}</span> */
+// }
+// //  <span>{val.sku}</span>

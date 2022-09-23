@@ -5,7 +5,7 @@ const mysql = require("mysql");
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "",
+  password: "password",
   database: "products",
 });
 app.use(cors());
