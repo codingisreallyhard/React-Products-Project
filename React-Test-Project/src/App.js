@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import "../src/Styles/App.css";
+import "./Styles/App.css";
 import AddProductPage from "./pages/AddProductPage";
 import ProductListPage from "./pages/ProductListPage";
 import Navigation from "./UI/Navigation";
