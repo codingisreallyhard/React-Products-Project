@@ -1,0 +1,55 @@
+/* Variables */
+.productlistcontainer {
+  width: 1200px;
+}
+
+.headercontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.headercontainer .hcontainer {
+  display: flex;
+  flex-direction: row;
+}
+.headercontainer .buttonscontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 24px;
+}
+
+.cardcontainer {
+  border-top: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.cardproductlist {
+  border: 1px solid black;
+  position: relative;
+  margin: auto;
+  margin-bottom: 4rem;
+  overflow: hidden;
+  width: 85%;
+  max-height: 499px;
+  transition: all 0.4s;
+  margin-top: 24px;
+}
+
+.valuescontainer {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+.valuescontainercheckbox {
+  display: flex;
+  justify-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 18px;
+}/*# sourceMappingURL=ProductsList.css.map */

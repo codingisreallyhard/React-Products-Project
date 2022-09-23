@@ -1,0 +1,54 @@
+@import "./Variables.scss";
+
+.productlistcontainer {
+  width: 1200px;
+}
+
+.headercontainer {
+  @include FlexRowSpace;
+  margin-bottom: $primarySize;
+
+  .hcontainer {
+    @include Flex;
+  }
+  .buttonscontainer {
+    @include Flex;
+    justify-content: flex-end;
+    gap: $primarySize;
+  }
+}
+
+.cardcontainer {
+  border-top: 1px solid $blackColor;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.cardproductlist {
+  border: 1px solid $blackColor;
+
+  position: relative;
+
+  margin: auto;
+  margin-bottom: 4rem;
+  overflow: hidden;
+  width: 85%;
+  max-height: 499px;
+  transition: all 0.4s;
+  margin-top: $primarySize;
+}
+
+.valuescontainer {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+.valuescontainercheckbox {
+  display: flex;
+  justify-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 18px;
+}
