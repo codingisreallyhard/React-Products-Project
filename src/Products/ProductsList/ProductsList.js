@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import axios from "axios";
 function ProductsList() {
   const [data, setData] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [checked, setChecked] = useState([]);
 
   const getProducts = useEffect(() => {
     axios.get("http://localhost:3001/products").then((response) => {
@@ -14,6 +14,16 @@ function ProductsList() {
       console.log(data);
     });
   }, []);
+
+  const handleCheck = (event) => {
+    var updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(event.target.value), 1);
+    }
+    setChecked(updatedList);
+  };
 
   // const deleteData = (sku) => {
   //   axios.delete(`http://localhost:3001/delete/${sku}`);
@@ -41,6 +51,16 @@ function ProductsList() {
   //   console.log(sku);
   // };
 
+  const deleteSku = () => {
+    data.forEach((d) => {
+      if (d.select) {
+        checked.push(d.sku);
+      }
+    });
+    console.log(checked);
+    axios.delete(`http://localhost:3001/delete/${checked}`);
+  };
+
   return (
     <>
       <div className="container productlistcontainer mt-4">
@@ -51,9 +71,9 @@ function ProductsList() {
           <div className="buttonscontainer">
             <AddButton />
             <button
-            // onClick={() => {
-            //   deleteProductById();
-            // }}
+              onClick={() => {
+                deleteSku();
+              }}
             >
               MASS DELETE
             </button>
@@ -68,12 +88,8 @@ function ProductsList() {
                     <input
                       type="checkbox"
                       value={val.sku}
-                      name={val.sku}
-                      onChange={(e) => {
-                        products.select = e.target.checked;
-                        setProducts(products);
-                        console.log(products);
-                      }}
+                      id={val.sku}
+                      onChange={handleCheck}
                     />
                   </div>
                   <div className="valuescontainer">
@@ -96,7 +112,12 @@ function ProductsList() {
               return (
                 <div className="cardproductlist">
                   <div className="valuescontainercheckbox pt-4 ml-3">
-                    <input type="checkbox" value={val.sku} />
+                    <input
+                      type="checkbox"
+                      value={val.sku}
+                      id={val.sku}
+                      onChange={handleCheck}
+                    />
                   </div>
                   <div className="valuescontainer">
                     <span> {val.name}</span>
@@ -118,7 +139,12 @@ function ProductsList() {
               return (
                 <div className="cardproductlist">
                   <div className="valuescontainercheckbox pt-4 ml-3">
-                    <input type="checkbox" value={val.sku} />
+                    <input
+                      type="checkbox"
+                      value={val.sku}
+                      id={val.sku}
+                      onChange={handleCheck}
+                    />
                   </div>
                   <div className="valuescontainer">
                     <span> {val.name}</span>
