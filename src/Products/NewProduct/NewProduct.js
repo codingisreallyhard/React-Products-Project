@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 
 function NewProduct() {
   const [inputs, setInputs] = useState({});
-
+  const navigate = useNavigate();
   const [type, setType] = useState("typeswitcher");
   const [book, setBook] = useState(false);
   const [furniture, setFurniture] = useState(false);
@@ -31,7 +31,6 @@ function NewProduct() {
     type === "book" ? setBook(true) : setBook(false);
     type === "furniture" ? setFurniture(true) : setFurniture(false);
   }, [type]);
-  const navigate = useNavigate();
 
   const handleTypeOnChange = (e) => {
     setType(e.target.value);

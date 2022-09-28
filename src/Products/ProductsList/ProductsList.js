@@ -8,11 +8,16 @@ function ProductsList() {
   const [data, setData] = useState([]);
   const [checked, setChecked] = useState([]);
 
-  const getProducts = useEffect(() => {
+  const getData = () => {
     axios.get("http://localhost:3001/products").then((response) => {
       setData(response.data);
       console.log(data);
     });
+    console.log(checked);
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
   const handleCheck = (event) => {
@@ -52,13 +57,17 @@ function ProductsList() {
   // };
 
   const deleteSku = () => {
+    window.location.reload(false);
     data.forEach((d) => {
       if (d.select) {
         checked.push(d.sku);
       }
     });
     console.log(checked);
-    axios.delete(`http://localhost:3001/delete/${checked}`);
+    axios.delete(`http://localhost:3001/delete/${checked}`).then((res) => {
+      console.log(res.data);
+      getData();
+    });
   };
 
   return (
@@ -161,6 +170,28 @@ function ProductsList() {
                         Dimensions: {val.length}x{val.width}x{val.height}
                       </span>
                     </span>
+                  </div>
+                </div>
+              );
+            } else {
+              return (
+                <div className="cardproductlist">
+                  <div className="valuescontainercheckbox pt-4 ml-3">
+                    <input
+                      type="checkbox"
+                      value={val.sku}
+                      id={val.sku}
+                      onChange={handleCheck}
+                    />
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.name}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.price}$</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span>{val.sku}</span>
                   </div>
                 </div>
               );
