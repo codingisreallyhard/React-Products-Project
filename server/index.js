@@ -53,11 +53,12 @@ app.get("/products", (req, res) => {
 
 app.delete("/delete/:sku", (req, res) => {
   const sku = req.params.sku;
-  db.query("DELETE FROM products WHERE sku = ?", [sku], (err, result) => {
+  db.query(`DELETE FROM products WHERE sku = ?`, [sku], (err, result) => {
     if (err) {
       console.log(err);
     } else {
       res.send(result);
+      console.log(req.params);
     }
   });
 });

@@ -37,13 +37,11 @@ function NewProduct() {
   };
 
   const handleChange = (event) => {
-    event.persist();
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
   const submitHandler = (event) => {
-    // event.preventDefault();
     console.log(inputs);
     const data = event;
     axios
@@ -88,7 +86,6 @@ function NewProduct() {
                 <div className="divcontainer">
                   <label>SKU </label>
                   <input
-                    // value={inputs.sku}
                     type="text"
                     name="sku"
                     onChange={handleChange}
@@ -104,8 +101,6 @@ function NewProduct() {
                 <div className="divcontainer">
                   <label>Name </label>
                   <input
-                    // defaultValue={}
-                    // value={inputs.name}
                     type="text"
                     name="name"
                     onChange={handleChange}
@@ -121,7 +116,6 @@ function NewProduct() {
                 <div className="divcontainer">
                   <label>Price($) </label>
                   <input
-                    // value={inputs.price}
                     type="text"
                     name="price"
                     onChange={handleChange}
@@ -163,7 +157,6 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>KG</label>
                         <input
-                          // value={inputs.kg}
                           type="number"
                           placeholder="Weight in KG"
                           id="kg"
@@ -194,7 +187,6 @@ function NewProduct() {
                         <label>Height</label>
 
                         <input
-                          // value={inputs.height}
                           type="number"
                           placeholder="Height in CM"
                           id="height"
@@ -218,7 +210,6 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>Width</label>
                         <input
-                          // value={inputs.width}
                           type="number"
                           placeholder=" Width in CM"
                           id="width"
@@ -242,7 +233,6 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>Length</label>
                         <input
-                          // value={inputs.length}
                           type="number"
                           placeholder="Length in CM"
                           id="length"
@@ -271,7 +261,6 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>MB</label>
                         <input
-                          // value={inputs.mb}
                           type="number"
                           placeholder="Size in MB"
                           id="size"

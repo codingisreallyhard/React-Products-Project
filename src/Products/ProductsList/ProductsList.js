@@ -57,17 +57,21 @@ function ProductsList() {
   // };
 
   const deleteSku = () => {
-    window.location.reload(false);
+    // window.location.reload(false);
     data.forEach((d) => {
       if (d.select) {
         checked.push(d.sku);
       }
     });
     console.log(checked);
-    axios.delete(`http://localhost:3001/delete/${checked}`).then((res) => {
-      console.log(res.data);
-      getData();
-    });
+    axios
+      .delete(`http://localhost:3001/delete/${checked}`, {
+        data: JSON.stringify(checked),
+      })
+      .then((res) => {
+        console.log(res.data);
+        getData();
+      });
   };
 
   return (
