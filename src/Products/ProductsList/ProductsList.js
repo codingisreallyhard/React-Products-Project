@@ -25,53 +25,17 @@ function ProductsList() {
     if (event.target.checked) {
       updatedList = [...checked, event.target.value];
     } else {
-      updatedList.splice(checked.indexOf(event.target.value), 1);
+      // updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
   };
 
-  // const deleteData = (sku) => {
-  //   axios.delete(`http://localhost:3001/delete/${sku}`);
-  // };
-
-  // const deleteProductById = () => {
-  //   products.forEach((product) => {
-  //     if (product.select) {
-  //       axios.delete(`http://localhost:3001/delete/`).then((res) => {
-  //         console.log(res.data);
-  //         getProducts();
-  //       });
-  //     }
-  //   });
-  // };
-
-  // const deleteProductById = () => {
-  //   let sku = [];
-  //   products.forEach((p) => {
-  //     if (p.select) {
-  //       sku.push(p.sku);
-  //     }
-  //   });
-  //   axios.delete(`http://localhost:3001/delete/${sku}`);
-  //   console.log(sku);
-  // };
-
   const deleteSku = () => {
-    // window.location.reload(false);
-    data.forEach((d) => {
-      if (d.select) {
-        checked.push(d.sku);
-      }
-    });
     console.log(checked);
-    axios
-      .delete(`http://localhost:3001/delete/${checked}`, {
-        data: JSON.stringify(checked),
-      })
-      .then((res) => {
-        console.log(res.data);
-        getData();
-      });
+    axios.delete(`http://localhost:3001/delete/${checked}`).then((res) => {
+      console.log(res.data);
+      getData();
+    });
   };
 
   return (

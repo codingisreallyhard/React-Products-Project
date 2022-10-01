@@ -52,13 +52,17 @@ app.get("/products", (req, res) => {
 });
 
 app.delete("/delete/:sku", (req, res) => {
-  const sku = req.params.sku;
-  db.query(`DELETE FROM products WHERE sku = ?`, [sku], (err, result) => {
+  const sku = req.params.sku.split(",");
+  const ins = new Array(sku.length).fill("?").join();
+
+  db.query(`DELETE FROM products WHERE sku IN (${ins})`, sku, (err, result) => {
     if (err) {
       console.log(err);
     } else {
       res.send(result);
-      console.log(req.params);
+      // console.log(req.params.sku);
+      // console.log(req.params);
+      console.log(sku);
     }
   });
 });
