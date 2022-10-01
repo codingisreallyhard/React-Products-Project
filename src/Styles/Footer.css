@@ -1,0 +1,14 @@
+/* Variables */
+.footercontainer {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid black;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+.footercontainer .addproductfooter {
+  margin-top: 48px;
+}/*# sourceMappingURL=Footer.css.map */

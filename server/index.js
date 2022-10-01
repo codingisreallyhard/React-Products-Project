@@ -60,10 +60,8 @@ app.delete("/delete/:sku", (req, res) => {
       console.log(err);
     } else {
       res.send(result);
-      // console.log(req.params.sku);
-      // console.log(req.params);
+
       console.log(sku);
     }
   });
 });
-// kg, mb, width, height, length

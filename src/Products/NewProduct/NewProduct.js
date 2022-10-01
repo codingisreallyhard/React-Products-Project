@@ -5,6 +5,7 @@ import "../../Styles/NewProduct.css";
 
 import CancelButton from "../../UI/CancelButton";
 import { useNavigate } from "react-router";
+import Footer from "../../UI/Footer";
 
 function NewProduct() {
   const [inputs, setInputs] = useState({});
@@ -157,7 +158,7 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>KG</label>
                         <input
-                          type="number"
+                          type="text"
                           placeholder="Weight in KG"
                           id="kg"
                           onChange={handleChange}
@@ -187,7 +188,7 @@ function NewProduct() {
                         <label>Height</label>
 
                         <input
-                          type="number"
+                          type="text"
                           placeholder="Height in CM"
                           id="height"
                           name="height"
@@ -210,7 +211,7 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>Width</label>
                         <input
-                          type="number"
+                          type="text"
                           placeholder=" Width in CM"
                           id="width"
                           name="width"
@@ -233,7 +234,7 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>Length</label>
                         <input
-                          type="number"
+                          type="text"
                           placeholder="Length in CM"
                           id="length"
                           name="length"
@@ -261,7 +262,7 @@ function NewProduct() {
                       <div className="divcontainer">
                         <label>MB</label>
                         <input
-                          type="number"
+                          type="text"
                           placeholder="Size in MB"
                           id="size"
                           name="mb"
@@ -289,11 +290,7 @@ function NewProduct() {
             </div>
           </div>
         </div>
-        <div className="footercontainer">
-          <footer className="addproductfooter">
-            ScandiWeb Test assignment
-          </footer>
-        </div>
+        <Footer />
       </form>
     </>
   );

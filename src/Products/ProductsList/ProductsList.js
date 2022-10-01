@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import AddButton from "../../UI/AddButton";
-import MassDeleteButton from "../../UI/MassDeleteButton";
+
 import "../../Styles/ProductsList.css";
 import { useEffect } from "react";
 import axios from "axios";
+import Footer from "../../UI/Footer";
 function ProductsList() {
   const [data, setData] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -48,6 +49,7 @@ function ProductsList() {
           <div className="buttonscontainer">
             <AddButton />
             <button
+              id="delete-product-btn"
               onClick={() => {
                 deleteSku();
               }}
@@ -66,6 +68,7 @@ function ProductsList() {
                       type="checkbox"
                       value={val.sku}
                       id={val.sku}
+                      className="delete-checkbox"
                       onChange={handleCheck}
                     />
                   </div>
@@ -167,6 +170,7 @@ function ProductsList() {
           })}
         </div>
       </div>
+      <Footer />
     </>
   );
 }

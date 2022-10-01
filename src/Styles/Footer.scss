@@ -1,0 +1,15 @@
+@import "./Variables.scss";
+
+.footercontainer {
+  margin-top: 200px;
+  @include Flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $blackColor;
+  margin-left: 120px;
+  margin-right: 120px;
+
+  .addproductfooter {
+    margin-top: $secondSize;
+  }
+}

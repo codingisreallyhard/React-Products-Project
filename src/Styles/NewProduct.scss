@@ -37,20 +37,6 @@
   }
 }
 
-.footercontainer {
-  margin-top: $thirdSize;
-  @include Flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid $blackColor;
-  margin-left: 120px;
-  margin-right: 120px;
-
-  .addproductfooter {
-    margin-top: $secondSize;
-  }
-}
-
 .myButton {
   background-color: #fff;
   border-radius: 30px;

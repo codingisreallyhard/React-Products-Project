@@ -38,6 +38,8 @@
   max-height: 499px;
   transition: all 0.4s;
   margin-top: 24px;
+  padding-bottom: 15px;
+  text-align: center;
 }
 
 .valuescontainer {
