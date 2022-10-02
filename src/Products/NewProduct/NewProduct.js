@@ -80,50 +80,63 @@ function NewProduct() {
             <div className="formcontainer">
               <div>
                 <div className="divcontainer">
-                  <label>SKU </label>
-                  <input
-                    type="text"
-                    name="sku"
-                    onChange={handleChange}
-                    placeholder="#sku"
-                    {...register("sku", {
-                      required: "Please, submit required data",
-                    })}
-                  />
+                  <label className="label__title">SKU</label>
+                  <label className="input">
+                    <input
+                      className="input__field"
+                      type="text"
+                      name="sku"
+                      onChange={handleChange}
+                      placeholder=" "
+                      {...register("sku", {
+                        required: "Please, submit required data",
+                      })}
+                    />
+                    <span className="input__label">Please enter SKU</span>
+                  </label>
                 </div>
+
                 {errors.sku && (
                   <div className="validationerror">{errors.sku.message}</div>
                 )}
                 <div className="divcontainer">
-                  <label>Name </label>
-                  <input
-                    type="text"
-                    name="name"
-                    onChange={handleChange}
-                    placeholder="#name"
-                    {...register("name", {
-                      required: "Please, submit required data",
-                    })}
-                  />
+                  <label className="label__title">Name </label>
+                  <label className="input">
+                    <input
+                      className="input__field"
+                      type="text"
+                      name="name"
+                      onChange={handleChange}
+                      placeholder=" "
+                      {...register("name", {
+                        required: "Please, submit required data",
+                      })}
+                    />
+                    <span className="input__label">Please enter NAME</span>
+                  </label>
                 </div>
                 {errors.name && (
                   <div className="validationerror">{errors.name.message}</div>
                 )}
                 <div className="divcontainer">
-                  <label>Price($) </label>
-                  <input
-                    type="text"
-                    name="price"
-                    onChange={handleChange}
-                    placeholder="#price"
-                    {...register("price", {
-                      required: "Please, submit required data",
-                      pattern: {
-                        value: /^[0-9]*$/,
-                        message: "Please, provide the data of indicated type",
-                      },
-                    })}
-                  />
+                  <label className="label__title">Price($) </label>
+                  <label className="input">
+                    <input
+                      className="input__field"
+                      type="text"
+                      name="price"
+                      onChange={handleChange}
+                      placeholder=" "
+                      {...register("price", {
+                        required: "Please, submit required data",
+                        pattern: {
+                          value: /^[0-9]*$/,
+                          message: "Please, provide the data of indicated type",
+                        },
+                      })}
+                    />
+                    <span className="input__label">Please enter PRICE</span>
+                  </label>
                 </div>
                 {errors.price && (
                   <div className="validationerror">{errors.price.message}</div>
@@ -134,6 +147,7 @@ function NewProduct() {
                     id="productType"
                     value={type}
                     onChange={handleTypeOnChange}
+                    className="typeswitcher"
                   >
                     <option value="typeswitcher">Type Switcher</option>
                     <option id="DVD" value="dvd">
@@ -151,22 +165,28 @@ function NewProduct() {
                   {book && (
                     <div>
                       <div className="divcontainer">
-                        <label>KG</label>
-                        <input
-                          type="text"
-                          placeholder="Weight in KG"
-                          id="weight"
-                          onChange={handleChange}
-                          name="kg"
-                          {...register("kg", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
-                        ></input>
+                        <label className="label__title">KG</label>
+                        <label className="input">
+                          <input
+                            className="input__field"
+                            type="text"
+                            placeholder=" "
+                            id="weight"
+                            onChange={handleChange}
+                            name="kg"
+                            {...register("kg", {
+                              required: "Please, submit required data",
+                              pattern: {
+                                value: /^[0-9]*$/,
+                                message:
+                                  "Please, provide the data of indicated type",
+                              },
+                            })}
+                          ></input>
+                          <span className="input__label">
+                            Please enter WEIGHT
+                          </span>
+                        </label>
                       </div>
                       {errors.kg && (
                         <div className="validationerror">
@@ -180,23 +200,28 @@ function NewProduct() {
                   {furniture && (
                     <>
                       <div className="divcontainer">
-                        <label>Height</label>
-
-                        <input
-                          type="text"
-                          placeholder="Height in CM"
-                          id="height"
-                          name="height"
-                          onChange={handleChange}
-                          {...register("height", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
-                        ></input>
+                        <label className="label__title">Height</label>
+                        <label className="input">
+                          <input
+                            className="input__field"
+                            type="text"
+                            placeholder=" "
+                            id="height"
+                            name="height"
+                            onChange={handleChange}
+                            {...register("height", {
+                              required: "Please, submit required data",
+                              pattern: {
+                                value: /^[0-9]*$/,
+                                message:
+                                  "Please, provide the data of indicated type",
+                              },
+                            })}
+                          ></input>
+                          <span className="input__label">
+                            Please enter HEIGHT
+                          </span>
+                        </label>
                       </div>
                       {errors.height && (
                         <div className="validationerror">
@@ -204,22 +229,28 @@ function NewProduct() {
                         </div>
                       )}
                       <div className="divcontainer">
-                        <label>Width</label>
-                        <input
-                          type="text"
-                          placeholder=" Width in CM"
-                          id="width"
-                          name="width"
-                          onChange={handleChange}
-                          {...register("width", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
-                        ></input>
+                        <label className="label__title">Width</label>
+                        <label className="input">
+                          <input
+                            className="input__field"
+                            type="text"
+                            placeholder=" "
+                            id="width"
+                            name="width"
+                            onChange={handleChange}
+                            {...register("width", {
+                              required: "Please, submit required data",
+                              pattern: {
+                                value: /^[0-9]*$/,
+                                message:
+                                  "Please, provide the data of indicated type",
+                              },
+                            })}
+                          ></input>
+                          <span className="input__label">
+                            Please enter WIDTH
+                          </span>
+                        </label>
                       </div>
                       {errors.width && (
                         <div className="validationerror">
@@ -227,22 +258,28 @@ function NewProduct() {
                         </div>
                       )}
                       <div className="divcontainer">
-                        <label>Length</label>
-                        <input
-                          type="text"
-                          placeholder="Length in CM"
-                          id="length"
-                          name="length"
-                          onChange={handleChange}
-                          {...register("length", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
-                        />
+                        <label className="label__title">Length</label>
+                        <label className="input">
+                          <input
+                            className="input__field"
+                            type="text"
+                            placeholder=" "
+                            id="length"
+                            name="length"
+                            onChange={handleChange}
+                            {...register("length", {
+                              required: "Please, submit required data",
+                              pattern: {
+                                value: /^[0-9]*$/,
+                                message:
+                                  "Please, provide the data of indicated type",
+                              },
+                            })}
+                          />
+                          <span className="input__label">
+                            Please enter LENGTH
+                          </span>
+                        </label>
                       </div>
                       {errors.length && (
                         <div className="validationerror">
@@ -255,22 +292,28 @@ function NewProduct() {
                   {dvd && (
                     <>
                       <div className="divcontainer">
-                        <label>MB</label>
-                        <input
-                          type="text"
-                          placeholder="Size in MB"
-                          id="size"
-                          name="mb"
-                          onChange={handleChange}
-                          {...register("mb", {
-                            required: "Please, submit required data",
-                            pattern: {
-                              value: /^[0-9]*$/,
-                              message:
-                                "Please, provide the data of indicated type",
-                            },
-                          })}
-                        ></input>
+                        <label className="label__title">MB</label>
+                        <label className="input">
+                          <input
+                            className="input__field"
+                            type="text"
+                            placeholder=" "
+                            id="size"
+                            name="mb"
+                            onChange={handleChange}
+                            {...register("mb", {
+                              required: "Please, submit required data",
+                              pattern: {
+                                value: /^[0-9]*$/,
+                                message:
+                                  "Please, provide the data of indicated type",
+                              },
+                            })}
+                          ></input>
+                          <span className="input__label">
+                            Please enter SIZE
+                          </span>
+                        </label>
                       </div>
                       {errors.mb && (
                         <div className="validationerror">

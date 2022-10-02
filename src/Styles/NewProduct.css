@@ -8,18 +8,26 @@
 }
 
 .divcontainer {
+  width: 450px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 24px;
   gap: 24px;
 }
+.divcontainer .label__title {
+  font-weight: 700;
+}
 
 .formcontainer {
-  border-top: 1px solid black;
+  border-top: 1px solid #999;
   display: grid;
   grid-template-columns: 1fr 2fr;
   height: 380px;
+}
+
+.validationerror {
+  color: red;
 }
 
 .headercontainer {
@@ -63,8 +71,43 @@
   top: 1px;
 }
 
-.validationerror {
-  color: red;
+.input {
+  position: relative;
+}
+.input__label {
+  position: absolute;
+  top: 0;
+  background: pink;
+  white-space: nowrap;
+  transform: translate(0, 0);
+  transform-origin: 0 0;
+  background: var(--color-background);
+  transition: transform 120ms ease-in;
+  font-weight: bold;
+  line-height: 1.2;
+  transform: translate(5%, 10%);
+  color: #333;
+}
+.input__field {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border: 3px solid #999;
+  padding-left: 64px;
+  color: #333;
+  border-radius: 8px;
+}
+.input__field:not(:-moz-placeholder-shown) + .input__label {
+  transform: translate(0.25rem, -75%) scale(0.8);
+  color: var(--color-accent);
+}
+.input__field:not(:-ms-input-placeholder) + .input__label {
+  transform: translate(0.25rem, -75%) scale(0.8);
+  color: var(--color-accent);
+}
+.input__field:focus + .input__label, .input__field:not(:placeholder-shown) + .input__label {
+  transform: translate(0.25rem, -75%) scale(0.8);
+  color: var(--color-accent);
 }
 
 /* Switch Types CSS classes(weight,size,dimensions)*/
@@ -79,6 +122,12 @@
   justify-content: space-around;
   margin-top: 24px;
   gap: 32px;
+}
+.typeswitchcontainer .typeswitcher {
+  background-color: #999;
+  color: #000000;
+  border-radius: 8px;
+  font-weight: 500;
 }
 
 /* MEDIA QUERIES *//*# sourceMappingURL=NewProduct.css.map */
