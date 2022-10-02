@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import "../../Styles/NewProduct.css";
-
 import CancelButton from "../../UI/CancelButton";
 import { useNavigate } from "react-router";
 import Footer from "../../UI/Footer";
@@ -43,7 +42,6 @@ function NewProduct() {
     setInputs((values) => ({ ...values, [name]: value }));
   };
   const submitHandler = (event) => {
-    console.log(inputs);
     const data = event;
     axios
       .post("http://localhost:3001/create", {
@@ -60,12 +58,9 @@ function NewProduct() {
         console.log("Added");
       });
 
-    console.log(data.name);
-    console.log(data);
     navigate("/");
   };
 
-  console.log(inputs);
   return (
     <>
       <form onSubmit={handleSubmit(submitHandler)} id="product_form">
@@ -160,7 +155,7 @@ function NewProduct() {
                         <input
                           type="text"
                           placeholder="Weight in KG"
-                          id="kg"
+                          id="weight"
                           onChange={handleChange}
                           name="kg"
                           {...register("kg", {

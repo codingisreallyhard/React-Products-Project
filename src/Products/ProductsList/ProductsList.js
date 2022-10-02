@@ -12,9 +12,7 @@ function ProductsList() {
   const getData = () => {
     axios.get("http://localhost:3001/products").then((response) => {
       setData(response.data);
-      console.log(data);
     });
-    console.log(checked);
   };
 
   useEffect(() => {
@@ -25,16 +23,12 @@ function ProductsList() {
     var updatedList = [...checked];
     if (event.target.checked) {
       updatedList = [...checked, event.target.value];
-    } else {
-      // updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
   };
 
   const deleteSku = () => {
-    console.log(checked);
     axios.delete(`http://localhost:3001/delete/${checked}`).then((res) => {
-      console.log(res.data);
       getData();
     });
   };
@@ -62,7 +56,7 @@ function ProductsList() {
           {data.map((val, key) => {
             if (val.kg) {
               return (
-                <div className="cardproductlist">
+                <div className="cardproductlist" key={key}>
                   <div className="valuescontainercheckbox pt-4 ml-3">
                     <input
                       type="checkbox"
@@ -90,7 +84,7 @@ function ProductsList() {
               );
             } else if (val.mb) {
               return (
-                <div className="cardproductlist">
+                <div className="cardproductlist" key={key}>
                   <div className="valuescontainercheckbox pt-4 ml-3">
                     <input
                       type="checkbox"
@@ -117,7 +111,7 @@ function ProductsList() {
               );
             } else if (val.length) {
               return (
-                <div className="cardproductlist">
+                <div className="cardproductlist" key={key}>
                   <div className="valuescontainercheckbox pt-4 ml-3">
                     <input
                       type="checkbox"
@@ -146,7 +140,7 @@ function ProductsList() {
               );
             } else {
               return (
-                <div className="cardproductlist">
+                <div className="cardproductlist" key={key}>
                   <div className="valuescontainercheckbox pt-4 ml-3">
                     <input
                       type="checkbox"
@@ -161,7 +155,7 @@ function ProductsList() {
                   <div className="valuescontainer">
                     <span> {val.price}$</span>
                   </div>
-                  <div className="valuescontainer">
+                  <div className="valuescontainer pb-5">
                     <span>{val.sku}</span>
                   </div>
                 </div>
