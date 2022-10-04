@@ -2,14 +2,23 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const mysql = require("mysql");
-const db = mysql.createConnection({
-  user: "root",
-  host: "localhost",
-  password: "",
-  database: "products",
+
+const db = mysql.createPool({
+  user: "b5c61f56416932",
+  host: "eu-cdbr-west-03.cleardb.net",
+  password: "e88a094a",
+  database: "heroku_449dc46110b4cb9",
 });
 app.use(cors());
 app.use(express.json());
+
+app.listen(process.env.PORT || 3000, function () {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
+});
 
 app.post("/create", (req, res) => {
   const name = req.body.name;
@@ -21,9 +30,6 @@ app.post("/create", (req, res) => {
   const height = req.body.width;
   const length = req.body.length;
 
-  console.log(price);
-  console.log(sku);
-  console.log(name);
   db.query(
     "INSERT INTO products (name,sku,price,kg,mb,width,height,length) VALUES(?,?,?,?,?,?,?,?)",
     [name, sku, price, kg, mb, width, height, length],
@@ -35,10 +41,6 @@ app.post("/create", (req, res) => {
       }
     }
   );
-});
-
-app.listen(3001, () => {
-  console.log("ye");
 });
 
 app.get("/products", (req, res) => {
@@ -60,8 +62,6 @@ app.delete("/delete/:sku", (req, res) => {
       console.log(err);
     } else {
       res.send(result);
-
-      console.log(sku);
     }
   });
 });
