@@ -6,11 +6,10 @@ import { useEffect } from "react";
 import axios from "axios";
 import Footer from "../../UI/Footer";
 
-// Fetch Products from Database
 function ProductsList() {
   const [data, setData] = useState([]);
   const [checked, setChecked] = useState([]);
-
+  // Fetch Products from Database
   const getData = () => {
     axios
       .get("https://heroku-scandiwebtest.herokuapp.com/products")

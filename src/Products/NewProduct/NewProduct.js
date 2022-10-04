@@ -79,6 +79,7 @@ function NewProduct() {
                   <label className="label__title">SKU</label>
                   <label className="input">
                     <input
+                      id="#sku"
                       className="input__field"
                       type="text"
                       name="sku"
@@ -98,6 +99,7 @@ function NewProduct() {
                   <label className="label__title">Name </label>
                   <label className="input">
                     <input
+                      id="#name"
                       className="input__field"
                       type="text"
                       name="name"
@@ -116,6 +118,7 @@ function NewProduct() {
                   <label className="label__title">Price($) </label>
                   <label className="input">
                     <input
+                      id="#price"
                       className="input__field"
                       type="text"
                       name="price"
@@ -137,7 +140,7 @@ function NewProduct() {
                 <div className="divcontainer typeswitchcontainer ">
                   <h6 className="smallswitchtype">Type Switcher</h6>
                   <select
-                    id="productType"
+                    id="#productType"
                     value={type}
                     onChange={handleTypeOnChange}
                     className="typeswitcher"
@@ -164,7 +167,7 @@ function NewProduct() {
                             className="input__field"
                             type="text"
                             placeholder=" "
-                            id="weight"
+                            id="#weight"
                             name="kg"
                             {...register("kg", {
                               required: "Please, submit required data",
@@ -198,7 +201,7 @@ function NewProduct() {
                             className="input__field"
                             type="text"
                             placeholder=" "
-                            id="height"
+                            id="#height"
                             name="height"
                             {...register("height", {
                               required: "Please, submit required data",
@@ -226,7 +229,7 @@ function NewProduct() {
                             className="input__field"
                             type="text"
                             placeholder=" "
-                            id="width"
+                            id="#width"
                             name="width"
                             {...register("width", {
                               required: "Please, submit required data",
@@ -254,7 +257,7 @@ function NewProduct() {
                             className="input__field"
                             type="text"
                             placeholder=" "
-                            id="length"
+                            id="#length"
                             name="length"
                             {...register("length", {
                               required: "Please, submit required data",
@@ -287,7 +290,7 @@ function NewProduct() {
                             className="input__field"
                             type="text"
                             placeholder=" "
-                            id="size"
+                            id="#size"
                             name="mb"
                             {...register("mb", {
                               required: "Please, submit required data",
