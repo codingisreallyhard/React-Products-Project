@@ -69,7 +69,7 @@ function ProductsList() {
                 <div className="cardproductlist" key={key}>
                   <div className="valuescontainercheckbox pt-4 ml-3">
                     <input
-                      className=".delete-checkbox"
+                      className="delete-checkbox"
                       type="checkbox"
                       value={val.sku}
                       id={val.sku}
@@ -97,7 +97,7 @@ function ProductsList() {
                 <div className="cardproductlist" key={key}>
                   <div className="valuescontainercheckbox pt-4 ml-3">
                     <input
-                      className=".delete-checkbox"
+                      className="delete-checkbox"
                       type="checkbox"
                       value={val.sku}
                       id={val.sku}
@@ -125,7 +125,7 @@ function ProductsList() {
                 <div className="cardproductlist" key={key}>
                   <div className="valuescontainercheckbox pt-4 ml-3">
                     <input
-                      className=".delete-checkbox"
+                      className="delete-checkbox"
                       type="checkbox"
                       value={val.sku}
                       id={val.sku}
@@ -155,7 +155,7 @@ function ProductsList() {
                 <div className="cardproductlist" key={key}>
                   <div className="valuescontainercheckbox pt-4 ml-3">
                     <input
-                      className=".delete-checkbox"
+                      className="delete-checkbox"
                       type="checkbox"
                       value={val.sku}
                       id={val.sku}
