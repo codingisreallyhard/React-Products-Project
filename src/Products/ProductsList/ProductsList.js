@@ -1,41 +1,46 @@
 import React, { useState } from "react";
 import AddButton from "../../UI/AddButton";
-import MassDeleteButton from "../../UI/MassDeleteButton";
+
 import "../../Styles/ProductsList.css";
 import { useEffect } from "react";
 import axios from "axios";
+import Footer from "../../UI/Footer";
+
+// Fetch Products from Database
 function ProductsList() {
   const [data, setData] = useState([]);
-  const [checked, setChecked] = useState();
+  const [checked, setChecked] = useState([]);
 
+  const getData = () => {
+    axios
+      .get("https://heroku-scandiwebtest.herokuapp.com/products")
+      .then((response) => {
+        setData(response.data);
+      });
+  };
+
+  // This function fills the data array the first time the page is loaded
   useEffect(() => {
-    axios.get("http://localhost:3001/products").then((response) => {
-      setData(response.data);
-    });
+    getData();
+    setChecked([]);
   }, []);
 
-  // const deleteData = (sku) => {
-  //   axios.delete(`http://localhost:3001/delete/${sku}`);
-  // };
+  // Set checked list whenever the checkboxes are ticked
+  const handleCheck = (event) => {
+    var updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    }
+    setChecked(updatedList);
+  };
 
-  // const deleteProductById = () => {
-  //   products.forEach((product) => {
-  // if (product.select) {
-  // "fetch the product.id(use whatever api fetch methods"
-  //  .then((res) => {
-  //  console.log(res.data);
-  //   getProducts();
-  //  })}});
-
+  // Delete the checked data from the database
   const deleteSku = () => {
-    let arraysku = [];
-    data.forEach((d) => {
-      if (d.select) {
-        arraysku.push(d.sku);
-      }
-    });
-    console.log(arraysku);
-    axios.delete(`http://localhost:3001/delete/${arraysku}`);
+    axios
+      .delete(`https://heroku-scandiwebtest.herokuapp.com/delete/${checked}`)
+      .then((res) => {
+        getData();
+      });
   };
 
   return (
@@ -46,8 +51,10 @@ function ProductsList() {
             <h1>Product List</h1>
           </div>
           <div className="buttonscontainer">
-            <AddButton />{" "}
+            <AddButton />
             <button
+              className="delete-btn"
+              id="delete-product-btn"
               onClick={() => {
                 deleteSku();
               }}
@@ -58,61 +65,119 @@ function ProductsList() {
         </div>
         <div className="cardcontainer">
           {data.map((val, key) => {
-            return (
-              <div className="cardproductlist">
-                <div className="valuescontainercheckbox pt-4 ml-3">
-                  <input
-                    type="checkbox"
-                    onChange={(e) => {
-                      let value = e.target.checked;
-                      setData(
-                        data.map((d) => {
-                          d.select = value;
-                          return d;
-                        })
-                      );
-                    }}
-                  />
+            if (val.kg) {
+              return (
+                <div className="cardproductlist" key={key}>
+                  <div className="valuescontainercheckbox pt-4 ml-3">
+                    <input
+                      className="delete-checkbox"
+                      type="checkbox"
+                      value={val.sku}
+                      id={val.sku}
+                      onChange={handleCheck}
+                    />
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.name}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.price}$</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span>{val.sku}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span className="pb-5">
+                      <span>Weight: {val.kg} KG</span>
+                    </span>
+                  </div>
                 </div>
-                <div className="valuescontainer">
-                  <span> {val.name}</span>
+              );
+            } else if (val.mb) {
+              return (
+                <div className="cardproductlist" key={key}>
+                  <div className="valuescontainercheckbox pt-4 ml-3">
+                    <input
+                      type="checkbox"
+                      value={val.sku}
+                      id={val.sku}
+                      onChange={handleCheck}
+                    />
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.name}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.price}$</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span>{val.sku}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span className="pb-5">
+                      <span>Size: {val.mb} MB</span>
+                    </span>
+                  </div>
                 </div>
-                <div className="valuescontainer">
-                  <span> {val.price}$</span>
+              );
+            } else if (val.length) {
+              return (
+                <div className="cardproductlist" key={key}>
+                  <div className="valuescontainercheckbox pt-4 ml-3">
+                    <input
+                      type="checkbox"
+                      value={val.sku}
+                      id={val.sku}
+                      onChange={handleCheck}
+                    />
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.name}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.price}$</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span>{val.sku}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span className="pb-5">
+                      <span>
+                        Dimensions: {val.length}x{val.width}x{val.height}
+                      </span>
+                    </span>
+                  </div>
                 </div>
-                <div className="valuescontainer">
-                  <span>{val.sku}</span>
+              );
+            } else {
+              return (
+                <div className="cardproductlist" key={key}>
+                  <div className="valuescontainercheckbox pt-4 ml-3">
+                    <input
+                      type="checkbox"
+                      value={val.sku}
+                      id={val.sku}
+                      onChange={handleCheck}
+                    />
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.name}</span>
+                  </div>
+                  <div className="valuescontainer">
+                    <span> {val.price}$</span>
+                  </div>
+                  <div className="valuescontainer pb-5">
+                    <span>{val.sku}</span>
+                  </div>
                 </div>
-                <div className="valuescontainer">
-                  <span className="pb-5">
-                    {<span>Weight:</span> && val.kg}
-                    {val.mb}
-                    {val.width}
-                    {val.height}
-                    {val.length}
-                  </span>
-                </div>
-              </div>
-            );
+              );
+            }
           })}
         </div>
       </div>
+      <Footer />
     </>
   );
 }
 
 export default ProductsList;
-
-<div className="cardproductlist"></div>;
-
-// {
-//   /* <input type="checkbox" value={val.sku} /> */
-// }
-
-// {
-//   /* <span> {val.name}</span> */
-// }
-// {
-//   /* <span> {val.price}</span> */
-// }
-// //  <span>{val.sku}</span>

@@ -2,6 +2,7 @@
 
 .productlistcontainer {
   width: 1200px;
+  height: 800px;
 }
 
 .headercontainer {
@@ -19,7 +20,7 @@
 }
 
 .cardcontainer {
-  border-top: 1px solid $blackColor;
+  border-top: 1px solid #999;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -27,18 +28,25 @@
 
 .cardproductlist {
   border: 1px solid $blackColor;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 
   position: relative;
-
+  padding: 20px;
   margin: auto;
   margin-bottom: 4rem;
   overflow: hidden;
   width: 85%;
   max-height: 499px;
-  transition: all 0.4s;
-  margin-top: $primarySize;
-}
 
+  margin-top: $primarySize;
+
+  border-radius: 11px;
+
+  transition: all 0.4s;
+}
+.cardproductlist:hover {
+  transform: scale(1.1);
+}
 .valuescontainer {
   display: flex;
   align-items: center;
@@ -51,4 +59,9 @@
   justify-items: flex-start;
   justify-content: flex-start;
   margin-left: 18px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 1200px) {
 }

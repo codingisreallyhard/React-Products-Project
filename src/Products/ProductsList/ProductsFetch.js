@@ -1,7 +1,1 @@
-import React from 'react'
-
-function ProductsFetch() {
-  
-}
-
-export default ProductsFetch
+//javascript object to express?

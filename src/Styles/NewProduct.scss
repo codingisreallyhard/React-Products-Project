@@ -2,6 +2,7 @@
 
 .containeraddproduct {
   width: 1200px;
+  height: 600px;
 }
 
 .switchercontainer {
@@ -9,18 +10,26 @@
 }
 
 .divcontainer {
+  width: 450px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: $primarySize;
-  gap: $primarySize;
+
+  .label__title {
+    font-weight: 700;
+  }
 }
 
 .formcontainer {
-  border-top: 1px solid $blackColor;
+  border-top: 1px solid #999;
   display: grid;
   grid-template-columns: 1fr 2fr;
   height: 380px;
+}
+
+.validationerror {
+  color: red;
 }
 
 .headercontainer {
@@ -37,43 +46,42 @@
   }
 }
 
-.footercontainer {
-  margin-top: $thirdSize;
-  @include Flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid $blackColor;
-  margin-left: 120px;
-  margin-right: 120px;
-
-  .addproductfooter {
-    margin-top: $secondSize;
-  }
-}
-
-.myButton {
-  background-color: #fff;
-  border-radius: 30px;
-  border: 1px solid #dcdcdc;
-  display: inline-block;
-  cursor: pointer;
-  color: #000000;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 6px 24px;
-  text-decoration: none;
-}
-.myButton:hover {
-  background-color: #dfdfdf;
-}
-.myButton:active {
+.input {
   position: relative;
-  top: 1px;
-}
 
-.validationerror {
-  color: red;
+  &__label {
+    position: absolute;
+    top: 0;
+
+    background: pink;
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    background: var(--color-background);
+    transition: transform 120ms ease-in;
+    font-weight: 700;
+    line-height: 1.2;
+    transform: translate(5%, 10%);
+    color: #333;
+  }
+  &__field {
+    box-sizing: border-box;
+    display: block;
+    width: 150%;
+    border: 3px solid #999;
+
+    color: #333;
+    flex-grow: 70%;
+    border-radius: 8px;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      & + .input__label {
+        transform: translate(0.25rem, -75%) scale(0.8);
+        color: var(--color-accent);
+      }
+    }
+  }
 }
 
 /* Switch Types CSS classes(weight,size,dimensions)*/
@@ -89,6 +97,12 @@
   justify-content: space-around;
   margin-top: $primarySize;
   gap: 32px;
+
+  .typeswitcher {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 8px;
+  }
 }
 
 /* MEDIA QUERIES */
