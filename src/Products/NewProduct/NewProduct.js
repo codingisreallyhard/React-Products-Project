@@ -146,13 +146,13 @@ function NewProduct() {
                     className="typeswitcher"
                   >
                     <option value="typeswitcher">Type Switcher</option>
-                    <option id="DVD" value="dvd">
+                    <option id="#DVD" value="dvd">
                       DVD
                     </option>
-                    <option id="Furniture" value="book">
+                    <option id="#Furniture" value="book">
                       Book
                     </option>
-                    <option id="Book" value="furniture">
+                    <option id="#Book" value="furniture">
                       Furniture
                     </option>
                   </select>
