@@ -79,7 +79,7 @@ function NewProduct() {
                   <label className="label__title">SKU</label>
                   <label className="input">
                     <input
-                      id="#sku"
+                      id="sku"
                       className="input__field"
                       type="text"
                       name="sku"
@@ -99,7 +99,7 @@ function NewProduct() {
                   <label className="label__title">Name </label>
                   <label className="input">
                     <input
-                      id="#name"
+                      id="name"
                       className="input__field"
                       type="text"
                       name="name"
@@ -118,7 +118,7 @@ function NewProduct() {
                   <label className="label__title">Price($) </label>
                   <label className="input">
                     <input
-                      id="#price"
+                      id="price"
                       className="input__field"
                       type="text"
                       name="price"
