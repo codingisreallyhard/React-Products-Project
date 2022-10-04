@@ -5,20 +5,27 @@ import "../../Styles/ProductsList.css";
 import { useEffect } from "react";
 import axios from "axios";
 import Footer from "../../UI/Footer";
+
+// Fetch Products from Database
 function ProductsList() {
   const [data, setData] = useState([]);
   const [checked, setChecked] = useState([]);
 
   const getData = () => {
-    axios.get("http://localhost:3001/products").then((response) => {
-      setData(response.data);
-    });
+    axios
+      .get("https://heroku-scandiwebtest.herokuapp.com/products")
+      .then((response) => {
+        setData(response.data);
+      });
   };
 
+  // This function fills the data array the first time the page is loaded
   useEffect(() => {
     getData();
+    setChecked([]);
   }, []);
 
+  // Set checked list whenever the checkboxes are ticked
   const handleCheck = (event) => {
     var updatedList = [...checked];
     if (event.target.checked) {
@@ -27,10 +34,13 @@ function ProductsList() {
     setChecked(updatedList);
   };
 
+  // Delete the checked data from the database
   const deleteSku = () => {
-    axios.delete(`http://localhost:3001/delete/${checked}`).then((res) => {
-      getData();
-    });
+    axios
+      .delete(`https://heroku-scandiwebtest.herokuapp.com/delete/${checked}`)
+      .then((res) => {
+        getData();
+      });
   };
 
   return (

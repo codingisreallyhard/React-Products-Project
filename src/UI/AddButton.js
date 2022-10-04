@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import "../Styles/AddButton.css";
+import "../Styles/Buttons.css";
 function AddButton() {
   const navigate = useNavigate();
   const navigateTo = () => {

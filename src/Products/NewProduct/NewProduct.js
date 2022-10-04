@@ -7,16 +7,18 @@ import { useNavigate } from "react-router";
 import Footer from "../../UI/Footer";
 
 function NewProduct() {
-  const [inputs, setInputs] = useState({});
   const navigate = useNavigate();
+
+  // These states are used to switch between different types of input fields
   const [type, setType] = useState("typeswitcher");
   const [book, setBook] = useState(false);
   const [furniture, setFurniture] = useState(false);
   const [dvd, setDvd] = useState(false);
+  // this is the useForm Hook, a third party hook used to manage form state and form erors
   const {
     register,
     handleSubmit,
-    setValue,
+
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -26,6 +28,7 @@ function NewProduct() {
     },
   });
 
+  // useEffect is used here to dynamically change the state of the type, if dvd is selected the type chances to dvd for example
   useEffect(() => {
     type === "dvd" ? setDvd(true) : setDvd(false);
     type === "book" ? setBook(true) : setBook(false);
@@ -36,15 +39,10 @@ function NewProduct() {
     setType(e.target.value);
   };
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
   const submitHandler = (event) => {
     const data = event;
     axios
-      .post("http://localhost:3001/create", {
+      .post("https://heroku-scandiwebtest.herokuapp.com/create", {
         name: data.name,
         sku: data.sku,
         price: data.price,
@@ -55,12 +53,10 @@ function NewProduct() {
         length: data.length,
       })
       .then(() => {
-        console.log("Added");
+        navigate("/");
       });
-
-    navigate("/");
   };
-
+  // For the useForm Hook to be active, the submitHandler has to be called inside the predefined handleSubmit of the hook Form
   return (
     <>
       <form onSubmit={handleSubmit(submitHandler)} id="product_form">
@@ -72,7 +68,7 @@ function NewProduct() {
               </div>
               <div className="buttonscontainer">
                 <button className="myButton" onSubmit={submitHandler}>
-                  Save{" "}
+                  Save
                 </button>
                 <CancelButton />
               </div>
@@ -86,7 +82,6 @@ function NewProduct() {
                       className="input__field"
                       type="text"
                       name="sku"
-                      onChange={handleChange}
                       placeholder=" "
                       {...register("sku", {
                         required: "Please, submit required data",
@@ -106,7 +101,6 @@ function NewProduct() {
                       className="input__field"
                       type="text"
                       name="name"
-                      onChange={handleChange}
                       placeholder=" "
                       {...register("name", {
                         required: "Please, submit required data",
@@ -125,7 +119,6 @@ function NewProduct() {
                       className="input__field"
                       type="text"
                       name="price"
-                      onChange={handleChange}
                       placeholder=" "
                       {...register("price", {
                         required: "Please, submit required data",
@@ -172,7 +165,6 @@ function NewProduct() {
                             type="text"
                             placeholder=" "
                             id="weight"
-                            onChange={handleChange}
                             name="kg"
                             {...register("kg", {
                               required: "Please, submit required data",
@@ -208,7 +200,6 @@ function NewProduct() {
                             placeholder=" "
                             id="height"
                             name="height"
-                            onChange={handleChange}
                             {...register("height", {
                               required: "Please, submit required data",
                               pattern: {
@@ -237,7 +228,6 @@ function NewProduct() {
                             placeholder=" "
                             id="width"
                             name="width"
-                            onChange={handleChange}
                             {...register("width", {
                               required: "Please, submit required data",
                               pattern: {
@@ -266,7 +256,6 @@ function NewProduct() {
                             placeholder=" "
                             id="length"
                             name="length"
-                            onChange={handleChange}
                             {...register("length", {
                               required: "Please, submit required data",
                               pattern: {
@@ -300,7 +289,6 @@ function NewProduct() {
                             placeholder=" "
                             id="size"
                             name="mb"
-                            onChange={handleChange}
                             {...register("mb", {
                               required: "Please, submit required data",
                               pattern: {
