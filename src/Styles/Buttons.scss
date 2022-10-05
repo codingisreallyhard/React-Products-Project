@@ -8,18 +8,11 @@
 
   font-size: 20px;
   font-weight: 500;
-  padding: 2px 32px;
+  padding: 2px 15px;
   text-decoration: none;
   transition: 0.4s all;
 }
-.addbtn:hover {
-  background-color: #2f9e44;
-  color: #fff;
-}
-.addbtn:active {
-  position: relative;
-  top: 1px;
-}
+
 /* Cancel Btn on Product Add Page */
 .cancel-btn {
   // background-color: #c92a2a;
@@ -30,14 +23,9 @@
 
   font-size: 20px;
   font-weight: 500;
-  padding: 2px 32px;
+  padding: 2px 15px;
   text-decoration: none;
   transition: 0.4s all;
-}
-
-.cancel-btn:hover {
-  background-color: #f03e3e;
-  color: #fff;
 }
 
 /*Save Button on Product Add page */
@@ -50,17 +38,9 @@
 
   font-size: 20px;
   font-weight: 500;
-  padding: 2px 32px;
+  padding: 2px 15px;
   text-decoration: none;
   transition: 0.4s all;
-}
-.myButton:hover {
-  background-color: #2f9e44;
-  color: #fff;
-}
-.myButton:active {
-  position: relative;
-  top: 1px;
 }
 
 /* MASS Delete Button on Product List Page */
@@ -74,15 +54,11 @@
 
   font-size: 20px;
   font-weight: 500;
-  padding: 4px 20px;
+  padding: 4px 15px;
   text-decoration: none;
   transition: 0.4s all;
 }
 
-.delete-btn:hover {
-  background-color: #f03e3e;
-  color: #fff;
-}
 .delete-btn:active {
   position: relative;
   top: 1px;
