@@ -57,7 +57,7 @@
     white-space: nowrap;
     transform: translate(0, 0);
     transform-origin: 0 0;
-    background: var(--color-background);
+
     transition: transform 120ms ease-in;
     font-weight: 700;
     line-height: 1.2;
@@ -78,7 +78,6 @@
     &:not(:placeholder-shown) {
       & + .input__label {
         transform: translate(0.25rem, -75%) scale(0.8);
-        color: var(--color-accent);
       }
     }
   }
