@@ -5,6 +5,9 @@ import "../../Styles/ProductsList.css";
 import { useEffect } from "react";
 import axios from "axios";
 import Footer from "../../UI/Footer";
+import Kg from "./Kg";
+import Mb from "./Mb";
+import Default from "./Default";
 
 function ProductsList() {
   const [data, setData] = useState([]);
@@ -64,116 +67,39 @@ function ProductsList() {
         </div>
         <div className="cardcontainer">
           {data.map((val, key) => {
-            if (val.kg) {
-              return (
-                <div className="cardproductlist" key={key}>
-                  <div className="valuescontainercheckbox pt-4 ml-3">
-                    <input
-                      class="delete-checkbox"
-                      type="checkbox"
-                      value={val.sku}
-                      id={val.sku}
-                      onChange={handleCheck}
-                    />
-                  </div>
-                  <div className="valuescontainer">
-                    <span> {val.name}</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span> {val.price}$</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span>{val.sku}</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span className="pb-5">
-                      <span>Weight: {val.kg} KG</span>
-                    </span>
-                  </div>
+            return (
+              <div className="cardproductlist" key={key}>
+                <div className="valuescontainercheckbox pt-4 ml-3">
+                  <input
+                    class="delete-checkbox"
+                    type="checkbox"
+                    value={val.sku}
+                    id={val.sku}
+                    onChange={handleCheck}
+                  />
                 </div>
-              );
-            } else if (val.mb) {
-              return (
-                <div className="cardproductlist" key={key}>
-                  <div className="valuescontainercheckbox pt-4 ml-3">
-                    <input
-                      class="delete-checkbox"
-                      type="checkbox"
-                      value={val.sku}
-                      id={val.sku}
-                      onChange={handleCheck}
-                    />
-                  </div>
-                  <div className="valuescontainer">
-                    <span> {val.name}</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span> {val.price}$</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span>{val.sku}</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span className="pb-5">
-                      <span>Size: {val.mb} MB</span>
-                    </span>
-                  </div>
+                <div className="valuescontainer">
+                  <span> {val.name}</span>
                 </div>
-              );
-            } else if (val.length) {
-              return (
-                <div className="cardproductlist" key={key}>
-                  <div className="valuescontainercheckbox pt-4 ml-3">
-                    <input
-                      class="delete-checkbox"
-                      type="checkbox"
-                      value={val.sku}
-                      id={val.sku}
-                      onChange={handleCheck}
-                    />
-                  </div>
-                  <div className="valuescontainer">
-                    <span> {val.name}</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span> {val.price}$</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span>{val.sku}</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span className="pb-5">
-                      <span>
-                        Dimensions: {val.length}x{val.width}x{val.height}
-                      </span>
-                    </span>
-                  </div>
+                <div className="valuescontainer">
+                  <span> {val.price}$</span>
                 </div>
-              );
-            } else {
-              return (
-                <div className="cardproductlist" key={key}>
-                  <div className="valuescontainercheckbox pt-4 ml-3">
-                    <input
-                      class="delete-checkbox"
-                      type="checkbox"
-                      value={val.sku}
-                      id={val.sku}
-                      onChange={handleCheck}
-                    />
-                  </div>
-                  <div className="valuescontainer">
-                    <span> {val.name}</span>
-                  </div>
-                  <div className="valuescontainer">
-                    <span> {val.price}$</span>
-                  </div>
-                  <div className="valuescontainer pb-5">
-                    <span>{val.sku}</span>
-                  </div>
+                <div className="valuescontainer">
+                  <span>{val.sku}</span>
                 </div>
-              );
-            }
+                <div className="valuescontainer">
+                  <span className="pb-5">
+                    {val.kg ? <div>Weight: {val.kg} KG</div> : null}
+                    {val.mb ? <div>Size: {val.mb} MB</div> : null}
+                    {val.length ? (
+                      <div>
+                        Dimensions: {val.length}x{val.height}x{val.width}
+                      </div>
+                    ) : null}
+                  </span>
+                </div>
+              </div>
+            );
           })}
         </div>
       </div>
