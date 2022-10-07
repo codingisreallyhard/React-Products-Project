@@ -86,12 +86,12 @@ function ProductsList() {
                 </div>
                 <div className="valuescontainer">
                   <span className="pb-5">
-                    {val.kg ? <div>Weight: {val.kg} KG</div> : ""}
-                    {val.mb ? <div>Size: {val.mb} MB</div> : ""}
+                    {val.kg ? <span>Weight: {val.kg} KG</span> : ""}
+                    {val.mb ? <span>Size: {val.mb} MB</span> : ""}
                     {val.length ? (
-                      <div>
+                      <span>
                         Dimensions: {val.length}x{val.height}x{val.width}
-                      </div>
+                      </span>
                     ) : (
                       ""
                     )}
