@@ -5,9 +5,6 @@ import "../../Styles/ProductsList.css";
 import { useEffect } from "react";
 import axios from "axios";
 import Footer from "../../UI/Footer";
-import Kg from "./Kg";
-import Mb from "./Mb";
-import Default from "./Default";
 
 function ProductsList() {
   const [data, setData] = useState([]);
@@ -89,13 +86,15 @@ function ProductsList() {
                 </div>
                 <div className="valuescontainer">
                   <span className="pb-5">
-                    {val.kg ? <div>Weight: {val.kg} KG</div> : null}
-                    {val.mb ? <div>Size: {val.mb} MB</div> : null}
+                    {val.kg ? <div>Weight: {val.kg} KG</div> : ""}
+                    {val.mb ? <div>Size: {val.mb} MB</div> : ""}
                     {val.length ? (
                       <div>
                         Dimensions: {val.length}x{val.height}x{val.width}
                       </div>
-                    ) : null}
+                    ) : (
+                      ""
+                    )}
                   </span>
                 </div>
               </div>
